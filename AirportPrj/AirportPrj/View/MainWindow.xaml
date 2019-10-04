@@ -1,0 +1,42 @@
+﻿<Window x:Class="AirportPrj.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirportPrj"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1000" WindowStartupLocation="CenterScreen" Background="White">
+
+    <Window.Resources>
+        <Style x:Key="GridMenuButtons">
+            <Setter Property="Control.HorizontalAlignment" Value="Left" />
+            <Setter Property="Control.VerticalAlignment" Value="Center" />
+            <Setter Property="Control.Width" Value="60" />
+            <Setter Property="Control.Height" Value="60" />
+            <Setter Property="Control.Margin" Value="5 5 0 0" />
+            <EventSetter Event="Button.Click" Handler="Button_Click" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid x:Name="GridMenu" Grid.Column="0" HorizontalAlignment="Left" Width="70" Height="auto" Background="#FFA4A4A8" >
+            <StackPanel>
+                <Button x:Name="button1" Content="Home" Style="{StaticResource GridMenuButtons}" />
+                <Button x:Name="button2" Content="Passenger" Style="{StaticResource GridMenuButtons}"/>
+                <Button x:Name="button3" Content="Flight" Style="{StaticResource GridMenuButtons}"/>
+                <Button x:Name="button4" Content="Settings" Style="{StaticResource GridMenuButtons}"/>
+            </StackPanel>
+
+        </Grid>
+
+        <Grid x:Name="ContentGrid" Width="700" Height="500" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.ColumnSpan="2"   >
+
+        </Grid>
+    </Grid>
+</Window>
