@@ -12,12 +12,26 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Win32;
+using System.Windows;
 
 namespace AirportPrj.ViewModel
 {
     class PassengerTabViewModel : ViewModelBase
     {
+
+        public AirportContext Context { get; }
+        public Passenger PassengerInfo { get; set; } = new Passenger();
+        public Passenger SelectedPassenger { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the PassengerTabViewModel class.
+        /// </summary>
+        public PassengerTabViewModel()
+        {
+
+        }
 
         public PassengerTabViewModel(AirportContext context)
         {
@@ -25,9 +39,7 @@ namespace AirportPrj.ViewModel
             Context.Passengers.Load();
         }
 
-        public AirportContext Context { get; }
-        public Passenger PassengertInfo { get; set; } = new Passenger();
-        public Passenger SelectedPassenger { get; set; }
+
 
         #region Commands
         private RelayCommand _addPassengerCommand;
@@ -35,29 +47,28 @@ namespace AirportPrj.ViewModel
         private RelayCommand _deletePassengerCommand;
         private RelayCommand _passengerGridSelectionChangedCommand;
 
-
-        public ICommand AddPassengerCommand => _addPassengerCommand ??
+        public  ICommand AddPassengerCommand => _addPassengerCommand ??
                     (_addPassengerCommand = new RelayCommand(
                         () =>
                         {
+                            MessageBox.Show("add");
+
                             Context.Passengers.Add(new Passenger()
                             {
-                                FirstName = PassengertInfo.FirstName,
-                                LastName = PassengertInfo.LastName,
-                                Nationality = PassengertInfo.Nationality,
-                                Passport = PassengertInfo.Passport,
-                                DateOfBirth = PassengertInfo.DateOfBirth,
-                                Sex = PassengertInfo.Sex,
-                                PassClass = PassengertInfo.PassClass,
-                                FlightID = PassengertInfo.FlightID,
+                                FirstName = PassengerInfo.FirstName,
+                                LastName = PassengerInfo.LastName,
+                                Nationality = PassengerInfo.Nationality,
+                                Passport = PassengerInfo.Passport,
+                                DateOfBirth = PassengerInfo.DateOfBirth,
+                                Sex = PassengerInfo.Sex,
+                                PassClass = PassengerInfo.PassClass,
+                                FlightID = PassengerInfo.FlightID,
                             });
                             Context.SaveChanges();
                         },
                         () =>
                         {
-                            if (string.IsNullOrEmpty(PassengertInfo.FirstName)
-                            || string.IsNullOrEmpty(PassengertInfo.LastName)
-                            || PassengertInfo.Passport == null)
+                            if (string.IsNullOrEmpty(PassengerInfo.FirstName) || string.IsNullOrEmpty(PassengerInfo.LastName) || PassengerInfo.Passport == null)
                             {
                                 return false;
                             }
@@ -69,22 +80,22 @@ namespace AirportPrj.ViewModel
             (_updatePassengerCommand = new RelayCommand(
                 () =>
                 {
-                    SelectedPassenger.FirstName = PassengertInfo.FirstName;
-                    SelectedPassenger.LastName = PassengertInfo.LastName;
-                    SelectedPassenger.Nationality = PassengertInfo.Nationality;
-                    SelectedPassenger.Passport = PassengertInfo.Passport;
-                    SelectedPassenger.DateOfBirth = PassengertInfo.DateOfBirth;
-                    SelectedPassenger.Sex = PassengertInfo.Sex;
-                    SelectedPassenger.PassClass = PassengertInfo.PassClass;
-                    SelectedPassenger.FlightID = PassengertInfo.FlightID;
+                    SelectedPassenger.FirstName = PassengerInfo.FirstName;
+                    SelectedPassenger.LastName = PassengerInfo.LastName;
+                    SelectedPassenger.Nationality = PassengerInfo.Nationality;
+                    SelectedPassenger.Passport = PassengerInfo.Passport;
+                    SelectedPassenger.DateOfBirth = PassengerInfo.DateOfBirth;
+                    SelectedPassenger.Sex = PassengerInfo.Sex;
+                    SelectedPassenger.PassClass = PassengerInfo.PassClass;
+                    SelectedPassenger.FlightID = PassengerInfo.FlightID;
                     Context.SaveChanges();
                 },
                 () =>
                 {
                     if (SelectedPassenger == null) return false;
-                    if (string.IsNullOrEmpty(PassengertInfo.FirstName)
-                        || string.IsNullOrEmpty(PassengertInfo.LastName)
-                        || PassengertInfo.Passport == null)
+                    if (string.IsNullOrEmpty(PassengerInfo.FirstName)
+                        || string.IsNullOrEmpty(PassengerInfo.LastName)
+                        || PassengerInfo.Passport == null)
                     {
                         return false;
                     }
@@ -101,22 +112,26 @@ namespace AirportPrj.ViewModel
                 },
                 () => SelectedPassenger != null));
 
-        public ICommand PassengerGridSelectionChangedCommand =>
-            _passengerGridSelectionChangedCommand ??
-            (_passengerGridSelectionChangedCommand =
-                new RelayCommand(
-                    () =>
-                    {
-                        PassengertInfo.FirstName = SelectedPassenger.FirstName;
-                        PassengertInfo.LastName = SelectedPassenger.LastName;
-                        PassengertInfo.Nationality = SelectedPassenger.Nationality;
-                        PassengertInfo.Passport = SelectedPassenger.Passport;
-                        PassengertInfo.DateOfBirth = SelectedPassenger.DateOfBirth;
-                        PassengertInfo.Sex = SelectedPassenger.Sex;
-                        PassengertInfo.PassClass = SelectedPassenger.PassClass;
-                        PassengertInfo.FlightID = SelectedPassenger.FlightID;
-                    },
-                    () => SelectedPassenger != null));
+        public ICommand PassengerGridSelectionChangedCommand
+        {
+            get
+            {
+                return _passengerGridSelectionChangedCommand ??
+                    (_passengerGridSelectionChangedCommand = new RelayCommand(
+                        () =>
+                        {
+                            PassengerInfo.FirstName = SelectedPassenger.FirstName;
+                            PassengerInfo.LastName = SelectedPassenger.LastName;
+                            PassengerInfo.Nationality = SelectedPassenger.Nationality;
+                            PassengerInfo.Passport = SelectedPassenger.Passport;
+                            PassengerInfo.DateOfBirth = SelectedPassenger.DateOfBirth;
+                            PassengerInfo.Sex = SelectedPassenger.Sex;
+                            PassengerInfo.PassClass = SelectedPassenger.PassClass;
+                            PassengerInfo.FlightID = SelectedPassenger.FlightID;
+                        },
+                        () => SelectedPassenger != null));
+            }
+        }
 
         #endregion
 

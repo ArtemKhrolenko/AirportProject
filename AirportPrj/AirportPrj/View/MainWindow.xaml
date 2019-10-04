@@ -35,7 +35,7 @@
 
         </Grid>
 
-        <Grid x:Name="ContentGrid" Width="700" Height="500" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.ColumnSpan="2"   >
+        <Grid x:Name="ContentGrid" Width="910" Height="500" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.ColumnSpan="2"   >
 
         </Grid>
     </Grid>

@@ -11,13 +11,10 @@ namespace AirportPrj.DataBase
     class AirportContext : DbContext
     {
         public AirportContext(string connectionString = "AirportPrj.Properties.Settings.AirportDBConnectionString")
-: base(connectionString)
-        //public AirportContext() : base(nameOrConnectionString: "Default")
+            : base(connectionString)
         {
 
         }
-
-        public DbSet<Passenger> Passengers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -26,5 +23,7 @@ namespace AirportPrj.DataBase
             //modelBuilder.Configurations.Add(new ClientConfig());
             //modelBuilder.Configurations.Add(new RoomConfig());
         }
+
+        public DbSet<Passenger> Passengers { get; set; }
     }
 }
