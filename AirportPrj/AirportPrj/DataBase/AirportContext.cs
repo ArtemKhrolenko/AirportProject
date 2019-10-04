@@ -10,9 +10,9 @@ namespace AirportPrj.DataBase
 {
     class AirportContext : DbContext
     {
-//        public AirportContext(string connectionString = "AirportPrj.Properties.Settings.AirportDBConnectionString")
-//: base(connectionString)
-        public AirportContext() : base(nameOrConnectionString: "Default")
+        public AirportContext(string connectionString = "AirportPrj.Properties.Settings.AirportDBConnectionString")
+: base(connectionString)
+        //public AirportContext() : base(nameOrConnectionString: "Default")
         {
 
         }

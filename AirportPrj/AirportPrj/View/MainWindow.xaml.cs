@@ -1,4 +1,5 @@
 ﻿using AirportPrj.DataBase;
+using AirportPrj.Model;
 using AirportPrj.ViewModel;
 using AirportPrj.View.UserControls;
 using System;
@@ -35,6 +36,7 @@ namespace AirportPrj
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<AirportContext>());
             //Database.SetInitializer(new DropCreateDatabaseAlways<AirportContext>()); // set it if you want to recreate database
             Context = new AirportContext();
+            //Fill();
             userControlPassenger.PassengersGrid.DataContext = new PassengerTabViewModel(Context);
         }
 
@@ -61,6 +63,22 @@ namespace AirportPrj
                     break;
             }
 
+        }
+
+        private void Fill()
+        {
+            var passengers = new[]
+            {
+                new Passenger {FirstName = "Stanislav", LastName = "Herasymiuk", Nationality = "", Passport = "1", DateOfBirth = new DateTime(1995, 9, 2), Sex = 0, PassClass = 0, FlightID = ""},
+                new Passenger {FirstName = "Stanislav", LastName = "Herasymiuk", Nationality = "", Passport = "2", DateOfBirth = new DateTime(1995, 9, 2), Sex = 0, PassClass = 0, FlightID = ""},
+                new Passenger {FirstName = "Stanislav", LastName = "Herasymiuk", Nationality = "", Passport = "3", DateOfBirth = new DateTime(1995, 9, 2), Sex = 0, PassClass = 0, FlightID = ""},
+                new Passenger {FirstName = "Stanislav", LastName = "Herasymiuk", Nationality = "", Passport = "4", DateOfBirth = new DateTime(1995, 9, 2), Sex = 0, PassClass = 0, FlightID = ""},
+                new Passenger {FirstName = "Stanislav", LastName = "Herasymiuk", Nationality = "", Passport = "5", DateOfBirth = new DateTime(1995, 9, 2), Sex = 0, PassClass = 0, FlightID = ""},
+                new Passenger {FirstName = "Stanislav", LastName = "Herasymiuk", Nationality = "", Passport = "6", DateOfBirth = new DateTime(1995, 9, 2), Sex = 0, PassClass = 0, FlightID = ""}
+            };
+
+            Context.Passengers.AddRange(passengers);
+            Context.SaveChanges();
         }
     }
 }
