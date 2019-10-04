@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AirportPrj
+namespace AirportPrj.View.UserControls
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для UserControlSettings.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserControlSettings : UserControl
     {
-        public MainWindow()
+        public UserControlSettings()
         {
             InitializeComponent();
         }
