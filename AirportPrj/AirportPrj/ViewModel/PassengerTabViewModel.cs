@@ -25,9 +25,6 @@ namespace AirportPrj.ViewModel
         public Passenger PassengerInfo { get; set; } = new Passenger();
         public Passenger SelectedPassenger { get; set; }
 
-        /// <summary>
-        /// Initializes a new instance of the PassengerTabViewModel class.
-        /// </summary>
         public PassengerTabViewModel()
         {
 
@@ -39,7 +36,7 @@ namespace AirportPrj.ViewModel
             Context.Passengers.Load();
         }
 
-
+        public int SelectedComboboxSex { get; set; }
 
         #region Commands
         private RelayCommand _addPassengerCommand;
@@ -126,6 +123,9 @@ namespace AirportPrj.ViewModel
                             PassengerInfo.Passport = SelectedPassenger.Passport;
                             PassengerInfo.DateOfBirth = SelectedPassenger.DateOfBirth;
                             PassengerInfo.Sex = SelectedPassenger.Sex;
+
+                            SelectedComboboxSex = (int)SelectedPassenger.Sex;
+
                             PassengerInfo.PassClass = SelectedPassenger.PassClass;
                             PassengerInfo.FlightID = SelectedPassenger.FlightID;
                         },
