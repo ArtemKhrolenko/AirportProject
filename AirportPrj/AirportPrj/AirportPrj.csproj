@@ -99,9 +99,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\XAMLConverters.cs" />
     <Compile Include="DataBase\AirportContext.cs" />
-    <Compile Include="DataBase\FlightConfig.cs" />
+    <Compile Include="DataBase\DepartureFlightConfig.cs" />
+    <Compile Include="DataBase\ArrivalFlightConfig.cs" />
     <Compile Include="DataBase\PassengerConfig.cs" />
+    <Compile Include="Model\ArrivalFlight.cs" />
+    <Compile Include="Model\DepartureFlight.cs" />
     <Compile Include="Model\Flight.cs" />
     <Compile Include="Model\Passenger.cs" />
     <Compile Include="ViewModel\FlightTabViewModel.cs" />

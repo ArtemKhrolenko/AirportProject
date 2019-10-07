@@ -5,6 +5,7 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace AirportPrj.ViewModel
 {
@@ -23,7 +24,8 @@ namespace AirportPrj.ViewModel
         public FlightTabViewModel(AirportContext context)
         {
             Context = context;
-            Context.Flights.Load();
+            Context.ArrivalFlight.Load();
+            Context.DepartureFlight.Load();
         }
         #endregion
 
@@ -37,23 +39,40 @@ namespace AirportPrj.ViewModel
                     (_addFlightCommand = new RelayCommand(
                         () =>
                         {
-                            MessageBox.Show("add");
-
-                            Context.Flights.Add(new Flight()
+                            switch (SelectedFlight)
                             {
-                                FlightID = FlightInfo.FlightID,
-                                Time = FlightInfo.Time,
-                                CityName = FlightInfo.CityName,
-                                AirCompany = FlightInfo.AirCompany,
-                                Terminal = FlightInfo.Terminal,
-                                GateID = FlightInfo.GateID,
-                                FlightStatus = FlightInfo.FlightStatus,
-                            });
+                                case ArrivalFlight _:
+                                    Context.ArrivalFlight.Add(new ArrivalFlight()
+                                    {
+                                        FlightID = FlightInfo.FlightID,
+                                        Time = FlightInfo.Time,
+                                        CityName = FlightInfo.CityName,
+                                        AirCompany = FlightInfo.AirCompany,
+                                        Terminal = FlightInfo.Terminal,
+                                        GateID = FlightInfo.GateID,
+                                        FlightStatus = FlightInfo.FlightStatus
+                                    });
+                                    break;
+                                case DepartureFlight _:
+                                    Context.DepartureFlight.Add(new DepartureFlight()
+                                    {
+                                        FlightID = FlightInfo.FlightID,
+                                        Time = FlightInfo.Time,
+                                        CityName = FlightInfo.CityName,
+                                        AirCompany = FlightInfo.AirCompany,
+                                        Terminal = FlightInfo.Terminal,
+                                        GateID = FlightInfo.GateID,
+                                        FlightStatus = FlightInfo.FlightStatus
+                                    });
+                                    break;
+                                default:
+                                    break;
+                            }
                             Context.SaveChanges();
                         },
                         () =>
                         {
-                            if (string.IsNullOrEmpty(FlightInfo.FlightID) || string.IsNullOrEmpty(FlightInfo.AirCompany))
+                            if (string.IsNullOrEmpty(FlightInfo.FlightID) || SelectedFlight.FlightID == FlightInfo.FlightID)
                             {
                                 return false;
                             }
@@ -90,7 +109,18 @@ namespace AirportPrj.ViewModel
             (_deleteFlightCommand = new RelayCommand(
                 () =>
                 {
-                    Context.Flights.Remove(SelectedFlight);
+                    switch (SelectedFlight)
+                    {
+                        case ArrivalFlight _:
+                            Context.ArrivalFlight.Remove((ArrivalFlight)SelectedFlight);
+                            break;
+                        case DepartureFlight _:
+                            Context.DepartureFlight.Remove((DepartureFlight)SelectedFlight);
+                            break;
+                        default:
+                            break;
+                    }
+
                     Context.SaveChanges();
                 },
                 () => SelectedFlight != null));

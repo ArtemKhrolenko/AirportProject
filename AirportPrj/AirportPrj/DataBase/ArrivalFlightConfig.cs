@@ -4,9 +4,9 @@ using AirportPrj.Model;
 
 namespace AirportPrj.DataBase
 {
-    class FlightConfig : EntityTypeConfiguration<Flight>
+    class ArrivalFlightConfig : EntityTypeConfiguration<ArrivalFlight>
     {
-        public FlightConfig()
+        public ArrivalFlightConfig()
         {
             HasKey(flight => flight.FlightID);
             Property(flight => flight.FlightID).IsRequired().HasMaxLength(50);
@@ -17,7 +17,7 @@ namespace AirportPrj.DataBase
             Property(flight => flight.GateID).IsRequired().HasMaxLength(50);
             Property(flight => flight.FlightStatus).IsRequired();
 
-            ToTable("Flight");
+            ToTable("ArrivalFlight");
         }
     }
 }

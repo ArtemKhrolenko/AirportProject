@@ -11,7 +11,8 @@ namespace AirportPrj.DataBase
     class AirportContext : DbContext
     {
         public DbSet<Passenger> Passengers { get; set; }
-        public DbSet<Flight> Flights { get; set; }
+        public DbSet<ArrivalFlight> ArrivalFlight { get; set; }
+        public DbSet<DepartureFlight> DepartureFlight { get; set; }
 
         public AirportContext(string connectionString = "AirportPrj.Properties.Settings.AirportDBConnectionString")
             : base(connectionString)
@@ -22,7 +23,8 @@ namespace AirportPrj.DataBase
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new PassengerConfig());
-            modelBuilder.Configurations.Add(new FlightConfig());
+            modelBuilder.Configurations.Add(new ArrivalFlightConfig());
+            modelBuilder.Configurations.Add(new DepartureFlightConfig());
         }
     }
 }
