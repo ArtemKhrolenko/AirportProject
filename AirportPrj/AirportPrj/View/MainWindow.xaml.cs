@@ -33,10 +33,10 @@ namespace AirportPrj
             userControlSettings = new UserControlSettings();
 
 
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<AirportContext>());
-            //Database.SetInitializer(new DropCreateDatabaseAlways<AirportContext>()); // set it if you want to recreate database
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<AirportContext>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<AirportContext>()); // set it if you want to recreate database
             Context = new AirportContext();
-            //Fill();
+            Fill();
             userControlPassenger.PassengersGrid.DataContext = new PassengerTabViewModel(Context);
             userControlFlight.FlightsGrid.DataContext = new FlightTabViewModel(Context);
         }
