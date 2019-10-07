@@ -1,19 +1,9 @@
 ﻿using AirportPrj.DataBase;
 using AirportPrj.Model;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Collections.ObjectModel;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.IO;
-using System.Linq;
-using System.Windows.Controls;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
-using GalaSoft.MvvmLight.Messaging;
-using Microsoft.Win32;
 using System.Windows;
 
 namespace AirportPrj.ViewModel

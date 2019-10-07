@@ -10,20 +10,19 @@ namespace AirportPrj.DataBase
 {
     class AirportContext : DbContext
     {
+        public DbSet<Passenger> Passengers { get; set; }
+        public DbSet<Flight> Flights { get; set; }
+
         public AirportContext(string connectionString = "AirportPrj.Properties.Settings.AirportDBConnectionString")
             : base(connectionString)
         {
-
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new PassengerConfig());
-            //modelBuilder.Configurations.Add(new ClientConfig());
-            //modelBuilder.Configurations.Add(new RoomConfig());
+            modelBuilder.Configurations.Add(new FlightConfig());
         }
-
-        public DbSet<Passenger> Passengers { get; set; }
     }
 }

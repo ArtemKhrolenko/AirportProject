@@ -100,8 +100,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataBase\AirportContext.cs" />
+    <Compile Include="DataBase\FlightConfig.cs" />
     <Compile Include="DataBase\PassengerConfig.cs" />
+    <Compile Include="Model\Flight.cs" />
     <Compile Include="Model\Passenger.cs" />
+    <Compile Include="ViewModel\FlightTabViewModel.cs" />
     <Compile Include="ViewModel\PassengerTabViewModel.cs" />
     <Compile Include="View\UserControls\UserControlFlight.xaml.cs">
       <DependentUpon>UserControlFlight.xaml</DependentUpon>
