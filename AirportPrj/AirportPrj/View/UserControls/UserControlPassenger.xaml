@@ -7,11 +7,12 @@
              xmlns:local="clr-namespace:AirportPrj.ViewModel"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:mod="clr-namespace:AirportPrj.Model"
-                          xmlns:conv="clr-namespace:AirportPrj.Converters"
+             xmlns:conv="clr-namespace:AirportPrj.Converters"
              mc:Ignorable="d"
              d:DesignHeight="500" d:DesignWidth="910">
 
     <UserControl.Resources>
+
         <Style TargetType="DataGrid">
             <Setter Property="AutoGenerateColumns" Value="False"/>
             <Setter Property="CanUserAddRows" Value="False"/>

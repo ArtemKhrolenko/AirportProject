@@ -11,6 +11,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="910">
     <UserControl.Resources>
+
         <Style TargetType="DataGrid">
             <Setter Property="AutoGenerateColumns" Value="False"/>
             <Setter Property="CanUserAddRows" Value="False"/>
@@ -60,16 +61,16 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <DataGrid Grid.Row="0" Grid.Column="0" x:Name="DataArrivalGrid" ItemsSource="{Binding Context.ArrivalFlight.Local}" SelectedItem="{Binding SelectedFlight, Mode=TwoWay}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="FlightID" Binding="{Binding FlightID}"/>
+                <DataGrid Grid.Row="0" Grid.Column="0" x:Name="DataArrivalGrid" Style="{StaticResource dataGridStyle}" ItemsSource="{Binding Context.ArrivalFlight.Local}" SelectedItem="{Binding SelectedFlight, Mode=TwoWay}">
+                    <!--<DataGrid.Columns>-->
+                        <!--<DataGridTextColumn Header="FlightID" Binding="{Binding FlightID}"/>
                         <DataGridTextColumn Header="Time" Binding="{Binding Path=Time, StringFormat={}{0:dd.MM.yyyy}}"/>
                         <DataGridTextColumn Header="CityName" Binding="{Binding CityName}"/>
                         <DataGridTextColumn Header="AirCompany" Binding="{Binding AirCompany}"/>
                         <DataGridTextColumn Header="Terminal" Binding="{Binding Terminal}"/>
                         <DataGridTextColumn Header="GateID" Binding="{Binding GateID}"/>
-                        <DataGridTextColumn Header="FlightStatus" Binding="{Binding FlightStatus}"/>
-                    </DataGrid.Columns>
+                        <DataGridTextColumn Header="FlightStatus" Binding="{Binding FlightStatus}"/>-->
+                    <!--</DataGrid.Columns>-->
                     <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
                                 <i:InvokeCommandAction Command="{Binding FlightGridSelectionChangedCommand}"/>
