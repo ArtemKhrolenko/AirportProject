@@ -15,7 +15,7 @@ namespace AirportPrj.Model
         private DateTime? _time;                // время
         private string _cityName;               // назначения
         private string _airCompany;             // перевозчик
-        private string _terminal;                 // терминал
+        private string _terminal;               // терминал
         private string _gateID;                 // gate
         private FlightStatus _flightStatus;     // статус
         #endregion
@@ -108,6 +108,14 @@ namespace AirportPrj.Model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+    }
+
+    class ArrivalFlight : Flight
+    {
+    }
+
+    class DepartureFlight : Flight
+    {
     }
 
     // Статус рейса
