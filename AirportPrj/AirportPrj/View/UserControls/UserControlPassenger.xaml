@@ -23,12 +23,18 @@
         <ObjectDataProvider x:Key="enumValues" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="mod:Sex"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="passValues" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="mod:PassClass"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+        
         <!--а вот этя, для выбора в комбобоксе-->
         <conv:SexConverter x:Key="sexConverter" />
-        <conv:SexConverter x:Key="passClassConverter" />
+        <conv:PassClassConverter x:Key="passClassConverter" />
     </UserControl.Resources>
 
     <Grid x:Name="PassengersGrid" d:DataContext="{d:DesignInstance d:Type=local:PassengerTabViewModel, IsDesignTimeCreatable=True}">
@@ -95,7 +101,7 @@
                 <DatePicker Grid.Row="4" Grid.Column="1" Margin="3" SelectedDate="{Binding PassengerInfo.DateOfBirth, Mode=TwoWay}"/>
 
                 <ComboBox Grid.Row="5" Grid.Column="1" Margin="3"  ItemsSource="{Binding Source={StaticResource enumValues}}" SelectedIndex="{Binding PassengerInfo.Sex, Mode=TwoWay, Converter={StaticResource sexConverter}}"/>
-                <ComboBox Grid.Row="6" Grid.Column="1" Margin="3"  ItemsSource="{Binding Source={StaticResource enumValues}}" SelectedIndex="{Binding PassengerInfo.PassClass, Mode=TwoWay, Converter={StaticResource passClassConverter}}"/>
+                <ComboBox Grid.Row="6" Grid.Column="1" Margin="3"  ItemsSource="{Binding Source={StaticResource passValues}}" SelectedIndex="{Binding PassengerInfo.PassClass, Mode=TwoWay, Converter={StaticResource passClassConverter}}"/>
 
                 <TextBox Grid.Row="7" Grid.Column="1" Margin="3" Text="{Binding PassengerInfo.FlightID, Mode=TwoWay}"/>
 
