@@ -23,11 +23,12 @@
         <ObjectDataProvider x:Key="enumValues" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="mod:Sex"/>
-                <!--<x:Type TypeName="mod:PassClass"/>-->
+                <x:Type TypeName="mod:PassClass"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <!--а вот этя, для выбора в комбобоксе-->
-        <conv:EnumConverter x:Key="enumConverter" />
+        <conv:SexConverter x:Key="sexConverter" />
+        <conv:SexConverter x:Key="passClassConverter" />
     </UserControl.Resources>
 
     <Grid x:Name="PassengersGrid" d:DataContext="{d:DesignInstance d:Type=local:PassengerTabViewModel, IsDesignTimeCreatable=True}">
@@ -36,20 +37,20 @@
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="293*"/>
+            <RowDefinition Height="207*"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.Row="0" Grid.Column="0" x:Name="DataGrid" ItemsSource="{Binding Context.Passengers.Local}" SelectedItem="{Binding SelectedPassenger, Mode=TwoWay}">
+        <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="DataGrid" ItemsSource="{Binding Context.Passengers.Local}" SelectedItem="{Binding SelectedPassenger, Mode=TwoWay}" Margin="10,0,0,0" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="First name" Binding="{Binding FirstName}"/>
-                <DataGridTextColumn Header="Last name" Binding="{Binding LastName}"/>
-                <DataGridTextColumn Header="Nationality" Binding="{Binding Nationality}"/>
-                <DataGridTextColumn Header="Passport" Binding="{Binding Passport}"/>
-                <DataGridTextColumn Header="DateOfBirth" Binding="{Binding Path=DateOfBirth, StringFormat={}{0:dd.MM.yyyy}}"/>
-                <DataGridTextColumn Header="Sex" Binding="{Binding Sex}"/>
-                <DataGridTextColumn Header="PassClass" Binding="{Binding PassClass}"/>
-                <DataGridTextColumn Header="FlightID" Binding="{Binding FlightID}"/>
+                <DataGridTextColumn Header="First name" Width="200"  Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Last name" Width="200" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Nationality" Width="150" Binding="{Binding Nationality}"/>
+                <DataGridTextColumn Header="Passport" Width="123" Binding="{Binding Passport}"/>
+                <DataGridTextColumn Header="DateOfBirth" Width="120" Binding="{Binding Path=DateOfBirth, StringFormat={}{0:dd.MM.yyyy}}"/>
+                <DataGridTextColumn Header="Sex" Width="80" Binding="{Binding Sex}"/>
+                <DataGridTextColumn Header="PassClass" Width="100" Binding="{Binding PassClass}"/>
+                <DataGridTextColumn Header="FlightID" Width="100" Binding="{Binding FlightID}"/>
             </DataGrid.Columns>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
@@ -59,7 +60,7 @@
         </DataGrid>
 
         <!-- < Passengers CRUD > -->
-        <Border Grid.Row="0" Grid.Column="1" BorderThickness="1" Margin="5" CornerRadius="0" BorderBrush="Black">
+        <Border Grid.Row="1" Grid.Column="1" BorderThickness="1" Margin="0" CornerRadius="0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -93,11 +94,10 @@
                 <TextBox Grid.Row="3" Grid.Column="1" Margin="3" Text="{Binding PassengerInfo.Passport, Mode=TwoWay}"/>
                 <DatePicker Grid.Row="4" Grid.Column="1" Margin="3" SelectedDate="{Binding PassengerInfo.DateOfBirth, Mode=TwoWay}"/>
 
-                <ComboBox Grid.Row="5" Grid.Column="1" Margin="3"  ItemsSource="{Binding Source={StaticResource enumValues}}" SelectedIndex="{Binding PassengerInfo.Sex, Mode=TwoWay, Converter={StaticResource enumConverter}}"/>
-                <!--<ComboBox Grid.Row="6" Grid.Column="1" Margin="3"  ItemsSource="{Binding Source={StaticResource enumValues}}" SelectedIndex="{Binding PassengerInfo.PassClass, Mode=TwoWay, Converter={StaticResource enumConverter}}"/>-->
+                <ComboBox Grid.Row="5" Grid.Column="1" Margin="3"  ItemsSource="{Binding Source={StaticResource enumValues}}" SelectedIndex="{Binding PassengerInfo.Sex, Mode=TwoWay, Converter={StaticResource sexConverter}}"/>
+                <ComboBox Grid.Row="6" Grid.Column="1" Margin="3"  ItemsSource="{Binding Source={StaticResource enumValues}}" SelectedIndex="{Binding PassengerInfo.PassClass, Mode=TwoWay, Converter={StaticResource passClassConverter}}"/>
 
-                <TextBox Grid.Row="6" Grid.Column="1" Margin="3" Text="{Binding PassengerInfo.PassClass, Mode=TwoWay}"/>
-                <TextBox Grid.Row="7" Grid.Column="1" Margin="3" Text="{Binding SelectedComboboxSex, Mode=TwoWay}"/>
+                <TextBox Grid.Row="7" Grid.Column="1" Margin="3" Text="{Binding PassengerInfo.FlightID, Mode=TwoWay}"/>
 
                 <DockPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="{Binding RelativeSource={RelativeSource AncestorType=Grid, Mode=FindAncestor}, Path=ActualWidth}">
                     <Button Margin="5" Padding="10,0,10,0" Content="Add" Command="{Binding AddPassengerCommand}"/>

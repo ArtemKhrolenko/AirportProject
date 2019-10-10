@@ -36,8 +36,6 @@ namespace AirportPrj.ViewModel
                     (_addPassengerCommand = new RelayCommand(
                         () =>
                         {
-                            MessageBox.Show("add");
-
                             Context.Passengers.Add(new Passenger()
                             {
                                 FirstName = PassengerInfo.FirstName,

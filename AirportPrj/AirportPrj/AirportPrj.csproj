@@ -103,11 +103,13 @@
     <Compile Include="DataBase\AirportContext.cs" />
     <Compile Include="DataBase\DepartureFlightConfig.cs" />
     <Compile Include="DataBase\ArrivalFlightConfig.cs" />
+    <Compile Include="DataBase\InitDB.cs" />
     <Compile Include="DataBase\PassengerConfig.cs" />
     <Compile Include="Model\Flight.cs" />
     <Compile Include="Model\Passenger.cs" />
     <Compile Include="ViewModel\FlightTabViewModel.cs" />
     <Compile Include="ViewModel\PassengerTabViewModel.cs" />
+    <Compile Include="ViewModel\SettingsTabViewModel.cs" />
     <Compile Include="View\UserControls\UserControlFlight.xaml.cs">
       <DependentUpon>UserControlFlight.xaml</DependentUpon>
     </Compile>
@@ -120,10 +122,6 @@
     <Compile Include="View\UserControls\UserControlSettings.xaml.cs">
       <DependentUpon>UserControlSettings.xaml</DependentUpon>
     </Compile>
-    <Page Include="DataGridDictionary.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -225,7 +223,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Resource Include="Images\airplane_take_off_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\airplane_landing_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AirportPrj.DataBase;
+using System.Data.Entity;
 
 namespace AirportPrj.View.UserControls
 {

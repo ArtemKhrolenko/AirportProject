@@ -7,7 +7,7 @@ using AirportPrj.Model;
 
 namespace AirportPrj.Converters
 {
-    public class EnumConverter : IValueConverter
+    public class FlightStatusConverter : IValueConverter
     {
         public object Convert(
             object value, Type targetType, object parameter, CultureInfo culture)
@@ -19,6 +19,36 @@ namespace AirportPrj.Converters
             object value, Type targetType, object parameter, CultureInfo culture)
         {
             return (FlightStatus)value;
+        }
+    }
+
+    public class SexConverter : IValueConverter
+    {
+        public object Convert(
+            object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (int)value;
+        }
+
+        public object ConvertBack(
+            object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (Sex)value;
+        }
+    }
+
+    public class PassClassConverter : IValueConverter
+    {
+        public object Convert(
+            object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (int)value;
+        }
+
+        public object ConvertBack(
+            object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (PassClass)value;
         }
     }
 

@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:AirportPrj.View.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid d:DataContext="{d:DesignData d:Type=local:SettingsTabViewModel, IsDesignTimeCreatable=True}">
     </Grid>
 </UserControl>

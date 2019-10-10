@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportPrj"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1000" WindowStartupLocation="CenterScreen" Background="White">
+        Title="Air tablo" Height="800" Width="1200" WindowStartupLocation="CenterScreen" Background="#FFDDDDDD" ResizeMode="NoResize">
 
     <Window.Resources>
         <Style x:Key="GridMenuButtons">
@@ -17,7 +17,7 @@
             <EventSetter Event="Button.Click" Handler="Button_Click" />
         </Style>
     </Window.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -27,15 +27,15 @@
 
         <Grid x:Name="GridMenu" Grid.Column="0" HorizontalAlignment="Left" Width="70" Height="auto" Background="#FFA4A4A8" >
             <StackPanel>
-                <Button x:Name="button1" Content="Home" Style="{StaticResource GridMenuButtons}" />
+                <Button x:Name="button1" Content="Flight" Style="{StaticResource GridMenuButtons}" />
                 <Button x:Name="button2" Content="Passenger" Style="{StaticResource GridMenuButtons}"/>
-                <Button x:Name="button3" Content="Flight" Style="{StaticResource GridMenuButtons}"/>
+                <Button x:Name="button3" Content="Tickets" Style="{StaticResource GridMenuButtons}"/>
                 <Button x:Name="button4" Content="Settings" Style="{StaticResource GridMenuButtons}"/>
             </StackPanel>
 
         </Grid>
 
-        <Grid x:Name="ContentGrid" Width="910" Height="500" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.ColumnSpan="2"   >
+        <Grid x:Name="ContentGrid" Width="1109" Height="751" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.ColumnSpan="2" Margin="10,10,10,10"   >
 
         </Grid>
     </Grid>
