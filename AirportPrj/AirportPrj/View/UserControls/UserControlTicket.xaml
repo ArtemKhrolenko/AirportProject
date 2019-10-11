@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="AirportPrj.View.UserControls.UserControlTicket"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:local="clr-namespace:AirportPrj.ViewModel"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:mod="clr-namespace:AirportPrj.Model"
+             xmlns:conv="clr-namespace:AirportPrj.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style TargetType="DataGrid">
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="CanUserDeleteRows" Value="False"/>
+        </Style>
+    </UserControl.Resources>
+
+
+    <Grid x:Name="TicketsGrid" d:DataContext="{d:DesignInstance d:Type=local:TicketTabViewModel, IsDesignTimeCreatable=True}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="43*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="293*"/>
+            <RowDefinition Height="207*"/>
+        </Grid.RowDefinitions>
+
+        <!--<DataGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" x:Name="DataGrid" ItemsSource="{Binding Context.Tickets.Local}" SelectedItem="{Binding SelectedTicket, Mode=TwoWay}" Margin="10,0,0,0" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="TicketID" Width="100"  Binding="{Binding TicketID}"/>
+                <DataGridTextColumn Header="FlightID" Width="100" Binding="{Binding FlightID}"/>
+                <DataGridTextColumn Header="Price" Width="100" Binding="{Binding Price}"/>
+            </DataGrid.Columns>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding TicketGridSelectionChangedCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </DataGrid>-->
+
+        <ListBox Grid.Column="0" Grid.Row="0" Grid.RowSpan ="2" x:Name="DataGrid" ItemsSource="{Binding Context.Tickets.Local}" SelectedItem="{Binding SelectedTicket, Mode=TwoWay}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <!--<TextBlock FontSize="18" Text="qqqqq" />-->
+
+                        <!--<TextBlock FontSize="18" Text="{Binding Path=Title}" />-->
+                        <TextBlock FontSize="12" Text="{Binding Path= FlightID}"/>
+                        <TextBlock FontSize="12" Text="{Binding Path= TicketNumb}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+
+
+</UserControl>

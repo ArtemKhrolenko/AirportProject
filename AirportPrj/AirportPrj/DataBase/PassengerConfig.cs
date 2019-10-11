@@ -16,7 +16,7 @@ namespace AirportPrj.DataBase
             Property(passenger => passenger.DateOfBirth).HasColumnType("date").IsOptional();
             Property(passenger => passenger.Sex).IsRequired();
             Property(passenger => passenger.PassClass).IsRequired();
-            Property(passenger => passenger.FlightID).IsRequired().HasMaxLength(50);
+            Property(passenger => passenger.FlightID).IsRequired();
 
             ToTable("Passenger");
         }

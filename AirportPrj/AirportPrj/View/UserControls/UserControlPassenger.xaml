@@ -57,6 +57,7 @@
                 <DataGridTextColumn Header="Sex" Width="80" Binding="{Binding Sex}"/>
                 <DataGridTextColumn Header="PassClass" Width="100" Binding="{Binding PassClass}"/>
                 <DataGridTextColumn Header="FlightID" Width="100" Binding="{Binding FlightID}"/>
+                <DataGridTextColumn Header="Price" Width="100" Binding="{Binding Ticket.Price}"/>
             </DataGrid.Columns>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">

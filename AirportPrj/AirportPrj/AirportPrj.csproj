@@ -105,11 +105,13 @@
     <Compile Include="DataBase\ArrivalFlightConfig.cs" />
     <Compile Include="DataBase\InitDB.cs" />
     <Compile Include="DataBase\PassengerConfig.cs" />
+    <Compile Include="DataBase\TicketConfig.cs" />
     <Compile Include="Model\Flight.cs" />
     <Compile Include="Model\Passenger.cs" />
+    <Compile Include="Model\Ticket.cs" />
     <Compile Include="ViewModel\FlightTabViewModel.cs" />
     <Compile Include="ViewModel\PassengerTabViewModel.cs" />
-    <Compile Include="ViewModel\SettingsTabViewModel.cs" />
+    <Compile Include="ViewModel\TicketTabViewModel.cs" />
     <Compile Include="View\UserControls\UserControlFlight.xaml.cs">
       <DependentUpon>UserControlFlight.xaml</DependentUpon>
     </Compile>
@@ -119,8 +121,8 @@
     <Compile Include="View\UserControls\UserControlPassenger.xaml.cs">
       <DependentUpon>UserControlPassenger.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\UserControlSettings.xaml.cs">
-      <DependentUpon>UserControlSettings.xaml</DependentUpon>
+    <Compile Include="View\UserControls\UserControlTicket.xaml.cs">
+      <DependentUpon>UserControlTicket.xaml</DependentUpon>
     </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -156,7 +158,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\UserControlSettings.xaml">
+    <Page Include="View\UserControls\UserControlTicket.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

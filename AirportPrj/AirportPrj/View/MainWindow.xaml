@@ -29,8 +29,8 @@
             <StackPanel>
                 <Button x:Name="button1" Content="Flight" Style="{StaticResource GridMenuButtons}" />
                 <Button x:Name="button2" Content="Passenger" Style="{StaticResource GridMenuButtons}"/>
-                <Button x:Name="button3" Content="Tickets" Style="{StaticResource GridMenuButtons}"/>
-                <Button x:Name="button4" Content="Settings" Style="{StaticResource GridMenuButtons}"/>
+                <Button x:Name="button3" Content="Ticket" Style="{StaticResource GridMenuButtons}"/>
+                <!--<Button x:Name="button4" Content="Settings" Style="{StaticResource GridMenuButtons}"/>-->
             </StackPanel>
 
         </Grid>

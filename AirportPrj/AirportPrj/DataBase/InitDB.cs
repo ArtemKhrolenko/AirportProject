@@ -15,6 +15,7 @@ namespace AirportPrj.DataBase
 
         internal static void Fill(AirportContext Context)
         {
+
             var passengers = new[]
             {
                 new Passenger {FirstName = "Mohammed", LastName = "Woodham", Nationality = "Afghan", Passport = "CH 123456", DateOfBirth = new DateTime(1995, 9, 2), Sex = Sex.Male, PassClass = PassClass.Business, FlightID = "1"},
@@ -30,6 +31,21 @@ namespace AirportPrj.DataBase
                 new Passenger {FirstName = "Ellie", LastName = "Baumer", Nationality = "Ukranian", Passport = "CX 336629", DateOfBirth = new DateTime(1999, 9, 2), Sex = Sex.Female, PassClass = PassClass.Economy, FlightID = "10"}
             };
             Context.Passengers.AddRange(passengers);
+
+            var tickets = new[]
+{
+                new Ticket {TicketNumb = passengers[0].FlightID, FlightID=passengers[0].FlightID, Price = 34.8M},
+                new Ticket {TicketNumb = passengers[1].FlightID, FlightID="23333", Price = 44.1M},
+                new Ticket {TicketNumb = passengers[2].FlightID, FlightID=passengers[2].FlightID, Price = 22.5M},
+                new Ticket {TicketNumb = passengers[3].FlightID, FlightID=passengers[3].FlightID, Price = 13.0M},
+                new Ticket {TicketNumb = passengers[4].FlightID, FlightID=passengers[4].FlightID, Price = 67.9M},
+                new Ticket {TicketNumb = passengers[5].FlightID, FlightID=passengers[5].FlightID, Price = 47.5M},
+                new Ticket {TicketNumb = passengers[6].FlightID, FlightID=passengers[6].FlightID, Price = 25.6M},
+                new Ticket {TicketNumb = passengers[7].FlightID, FlightID=passengers[7].FlightID, Price = 36.7M},
+                new Ticket {TicketNumb = passengers[8].FlightID, FlightID=passengers[8].FlightID, Price = 47.8M},
+                new Ticket {TicketNumb = passengers[9].FlightID,FlightID=passengers[9].FlightID, Price = 58.9M}
+            };
+            Context.Tickets.AddRange(tickets);
 
             var arrivalFlights = new[]
 {

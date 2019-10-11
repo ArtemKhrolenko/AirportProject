@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace AirportPrj.Model
 {
@@ -51,6 +53,7 @@ namespace AirportPrj.Model
                 OnPropertyChanged();
             }
         }
+
         public string Passport
         {
             get => _passport;
@@ -101,6 +104,9 @@ namespace AirportPrj.Model
                 OnPropertyChanged();
             }
         }
+
+        [ForeignKey("FlightID")]
+        public Ticket Ticket { get; set; }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

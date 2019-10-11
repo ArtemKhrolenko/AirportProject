@@ -11,6 +11,7 @@ namespace AirportPrj.DataBase
     class AirportContext : DbContext
     {
         public DbSet<Passenger> Passengers { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
         public DbSet<ArrivalFlight> ArrivalFlight { get; set; }
         public DbSet<DepartureFlight> DepartureFlight { get; set; }
 
@@ -23,6 +24,7 @@ namespace AirportPrj.DataBase
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new PassengerConfig());
+            modelBuilder.Configurations.Add(new TicketConfig());
             modelBuilder.Configurations.Add(new ArrivalFlightConfig());
             modelBuilder.Configurations.Add(new DepartureFlightConfig());
         }

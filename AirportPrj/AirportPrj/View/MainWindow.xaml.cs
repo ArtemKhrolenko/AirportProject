@@ -17,20 +17,20 @@ namespace AirportPrj
     {
         private AirportContext Context { get; }
 
-        public UserControlHome userControlHome;
+        //public UserControlHome userControlHome;
         public UserControlPassenger userControlPassenger;
         public UserControlFlight userControlFlight;
-        public UserControlSettings userControlSettings;
+        public UserControlTicket userControlTicket;
 
         public MainWindow()
         {
             InitializeComponent();
 
             // загружаем ресурсы пользовательских элементов
-            userControlHome = new UserControlHome();
+            //userControlHome = new UserControlHome();
             userControlPassenger = new UserControlPassenger();
             userControlFlight = new UserControlFlight();
-            userControlSettings = new UserControlSettings();
+            userControlTicket = new UserControlTicket();
 
             Context = new AirportContext();
             InitDB.IsRebuid = true; // set it if you want to recreate database
@@ -47,7 +47,7 @@ namespace AirportPrj
             userControlPassenger.PassengersGrid.DataContext = new PassengerTabViewModel(Context);
             userControlFlight.ArrivalFlightsGrid.DataContext = new FlightTabViewModel(Context);
             userControlFlight.DepartureFlightsGrid.DataContext = new FlightTabViewModel(Context);
-            userControlSettings.DataContext = new FlightTabViewModel(Context);
+            userControlTicket.TicketsGrid.DataContext = new TicketTabViewModel(Context);
 
             ContentGrid.Children.Add(userControlFlight);
         }
@@ -60,7 +60,7 @@ namespace AirportPrj
             switch (clickedButton.Content.ToString())
             {
                 case "Home":
-                    ContentGrid.Children.Add(userControlHome);
+                    //ContentGrid.Children.Add(userControlHome);
                     break;
                 case "Passenger":
                     ContentGrid.Children.Add(userControlPassenger);
@@ -68,8 +68,8 @@ namespace AirportPrj
                 case "Flight":
                     ContentGrid.Children.Add(userControlFlight);
                     break;
-                case "Settings":
-                    ContentGrid.Children.Add(userControlSettings);
+                case "Ticket":
+                    ContentGrid.Children.Add(userControlTicket);
                     break;
                 default:
                     break;
