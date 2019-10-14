@@ -30,7 +30,7 @@ namespace AirportPrj.Model
                 OnPropertyChanged();
             }
         }
-        //[ForeignKey("Passenger")]
+
         public string FlightID
         {
             get => _flightID;
