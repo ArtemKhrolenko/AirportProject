@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,8 @@ namespace AirportPrj.Model
         private string _terminal;               // терминал
         private string _gateID;                 // gate
         private FlightStatus _flightStatus;     // статус
+
+        private Plane _plane;                   //Тип самолета
         #endregion
 
         #region Properties
@@ -98,6 +101,20 @@ namespace AirportPrj.Model
                 OnPropertyChanged();
             }
         }
+
+        [ForeignKey("FlightID")]
+        public Plane Plane
+        {
+            get => _plane;
+            set
+            {
+                if (value == _plane) return;
+                _plane = value;
+                OnPropertyChanged();
+            }
+        }
+
+
 
         #endregion
 

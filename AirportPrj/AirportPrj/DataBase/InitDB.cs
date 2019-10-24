@@ -75,6 +75,17 @@ namespace AirportPrj.DataBase
                 new DepartureFlight {FlightID = "LH 1494", Time = new DateTime(2002, 9, 2), CityName = "Минск", AirCompany = "Lufthansa", Terminal = "A", GateID = "D1", FlightStatus = FlightStatus.Unknown},
                 new DepartureFlight {FlightID = "PS 472", Time = new DateTime(1999, 9, 2), CityName = "Брюсель", AirCompany = "Azur Air Ukraine", Terminal = "B", GateID = "D2", FlightStatus = FlightStatus.Arrived}
             };
+
+            var planes = new[]
+            {
+                new Plane {FlightID = "11111", Manufacturer = "Boeing", Model = "737"},
+                new Plane {FlightID = "22222", Manufacturer = "AirBus", Model = "A380"}
+            };
+
+
+
+
+
             Context.DepartureFlight.AddRange(departurelFlights);
 
             Context.SaveChanges();
