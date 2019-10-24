@@ -20,9 +20,8 @@ namespace AirportPrj.Model
         #endregion
 
 
-        #region Properties       
-        
-        public int PlaneID { get; }
+        #region Properties
+        public string PlaneID { get; set; }
 
         public string Manufacturer
         {
@@ -55,9 +54,8 @@ namespace AirportPrj.Model
                 _flightID = value;
                 OnPropertyChanged();
             }
-        }
-
-        public Flight Flight { get; set; }
+        }       
+       
         #endregion
 
 

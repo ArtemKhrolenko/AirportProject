@@ -10,7 +10,7 @@ namespace AirportPrj.DataBase
         public PlaneConfig()
         {
             HasKey(plane => plane.PlaneID);
-            Property(plane => plane.PlaneID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            //Property(plane => plane.PlaneID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             Property(plane => plane.Manufacturer).IsRequired().HasMaxLength(50);
             Property(plane => plane.Model).IsRequired().HasMaxLength(50);

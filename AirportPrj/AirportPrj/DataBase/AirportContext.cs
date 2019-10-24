@@ -15,7 +15,7 @@ namespace AirportPrj.DataBase
         public DbSet<ArrivalFlight> ArrivalFlight { get; set; }
         public DbSet<DepartureFlight> DepartureFlight { get; set; }
 
-        public DbSet<DepartureFlight> Planes { get; set; }
+        public DbSet<Plane> Planes { get; set; }
 
         public AirportContext(string connectionString = "AirportPrj.Properties.Settings.AirportDBConnectionString")
             : base(connectionString)
