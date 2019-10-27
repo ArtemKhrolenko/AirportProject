@@ -14,14 +14,18 @@ namespace AirportPrj.Model
     {
         
         #region Fields
-        private string _manufacturer;
-        private string _model;
-        private string _flightID;
+        private string _manufacturer;           // производитель
+        private string _model;                  // модель воздушного судна
+        private string _flightID;               // связующие звено
+        private int _businessSeatsNumbers;      // количество мест бизнесс класса
+        private int _firstClassSeatsNumbers;    // количество мест первого класса
+        private int _economSeatsNumbers;        // количество мест эконом класса
         #endregion
 
 
         #region Properties
         public string PlaneID { get; set; }
+        public int TotalSeatsNumbers { get; set; }
 
         public string Manufacturer
         {
@@ -54,20 +58,48 @@ namespace AirportPrj.Model
                 _flightID = value;
                 OnPropertyChanged();
             }
-        }       
-       
+        }
+
+        public int BusinessSeatsNumbers
+        {
+            get => _businessSeatsNumbers;
+            set
+            {
+                if (value == _businessSeatsNumbers) return;
+                _businessSeatsNumbers = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int FirstClassSeatsNumbers
+        {
+            get => _firstClassSeatsNumbers;
+            set
+            {
+                if (value == _firstClassSeatsNumbers) return;
+                _firstClassSeatsNumbers = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int EconomSeatsNumbers
+        {
+            get
+            {
+                return TotalSeatsNumbers - (EconomSeatsNumbers + FirstClassSeatsNumbers);
+            }
+        }
+
         #endregion
 
 
-
-
-
-
+        #region Event
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
     }
 }

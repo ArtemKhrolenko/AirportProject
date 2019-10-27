@@ -110,6 +110,7 @@
     <Compile Include="Model\Plane.cs" />
     <Compile Include="Model\Flight.cs" />
     <Compile Include="Model\Passenger.cs" />
+    <Compile Include="Model\Seat.cs" />
     <Compile Include="Model\Ticket.cs" />
     <Compile Include="ViewModel\FlightTabViewModel.cs" />
     <Compile Include="ViewModel\PassengerTabViewModel.cs" />
