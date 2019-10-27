@@ -16,6 +16,7 @@ namespace AirportPrj.DataBase
             Property(flight => flight.Terminal).IsRequired().HasMaxLength(2);
             Property(flight => flight.GateID).IsRequired().HasMaxLength(50);
             Property(flight => flight.FlightStatus).IsRequired();
+            //Property(flight => flight.PlaneID).IsRequired();
 
             ToTable("ArrivalFlight");
         }

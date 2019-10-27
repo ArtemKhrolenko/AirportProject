@@ -20,7 +20,7 @@ namespace AirportPrj.Model
         #endregion
 
 
-        #region Properties
+        #region Properties       
         public string PlaneID { get; set; }
 
         public string Manufacturer
@@ -44,18 +44,24 @@ namespace AirportPrj.Model
                 OnPropertyChanged();
             }
         }
-        
-        public string FlightID
-        {
-            get => _flightID;
-            set
-            {
-                if (value == _flightID) return;
-                _flightID = value;
-                OnPropertyChanged();
-            }
-        }       
-       
+
+        //[ForeignKey("Flight")]
+        //public string FlightID
+        //{
+        //    get => _flightID;
+        //    set
+        //    {
+        //        if (value == _flightID) return;
+        //        _flightID = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
+
+        //[Required]
+        //public virtual Flight Flight { get; set; }
+
+
         #endregion
 
 

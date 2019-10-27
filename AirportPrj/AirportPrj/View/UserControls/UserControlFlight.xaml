@@ -76,7 +76,10 @@
                         <DataGridTextColumn Header="Terminal" Width="100" Binding="{Binding Terminal}"/>
                         <DataGridTextColumn Header="GateID" Width="100" Binding="{Binding GateID}"/>
                         <DataGridTextColumn Header="FlightStatus" Width="127" Binding="{Binding FlightStatus}"/>
-                        <!--<DataGridTextColumn Header="Plane" Width="127" Binding="{Binding }"/>-->
+                        <DataGridTextColumn Header="Plane" Width="127" Binding="{Binding Plane.PlaneID}"/>
+                        <DataGridTextColumn Header="Plane" Width="127" Binding="{Binding Plane.Model}"/>
+
+
 
                     </DataGrid.Columns>
                     <i:Interaction.Triggers>

@@ -102,8 +102,8 @@ namespace AirportPrj.Model
             }
         }
 
-        [ForeignKey("FlightID")]
-        public Plane Plane
+        
+        public virtual Plane Plane
         {
             get => _plane;
             set
@@ -114,6 +114,8 @@ namespace AirportPrj.Model
             }
         }
 
+        [ForeignKey("Plane")]
+        public string PlaneID { get; set; }
 
 
         #endregion
