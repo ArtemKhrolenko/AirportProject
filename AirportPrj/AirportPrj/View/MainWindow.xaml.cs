@@ -33,7 +33,7 @@ namespace AirportPrj
             userControlTicket = new UserControlTicket();
 
             Context = new AirportContext();
-            InitDB.IsRebuid = true; // set it if you want to recreate database
+            InitDB.IsRebuid = false; // set it if you want to recreate database
             if (InitDB.IsRebuid)
             {
                 Database.SetInitializer(new DropCreateDatabaseAlways<AirportContext>());

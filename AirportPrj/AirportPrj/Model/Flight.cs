@@ -6,21 +6,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace AirportPrj.Model
 {
     class Flight : INotifyPropertyChanged
     {
         #region Fields
-        private string _flightID;               // номер рейса
-        private DateTime? _time;                // время
-        private string _cityName;               // назначения
-        private string _airCompany;             // перевозчик
-        private string _terminal;               // терминал
-        private string _gateID;                 // gate
-        private FlightStatus _flightStatus;     // статус
+        private string _flightID;                   // номер рейса
+        private DateTime? _time;                    // время
+        private string _cityName;                   // назначения
+        private string _airCompany;                 // перевозчик
+        private string _terminal;                   // терминал
+        private string _gateID;                     // gate
+        private FlightStatus _flightStatus;         // статус
+        private Plane _plane;                       // тип самолета
+                                                    //private ObservableCollection<Seat> _seats;  // места в самолете
+        #endregion
 
-        private Plane _plane;                   //Тип самолета
+        #region Constructor
+        public Flight()
+        {            
+        }
+        public Flight(string FlightID)
+        {
+            this.FlightID = FlightID;
+            CreateSeats();
+        }
         #endregion
 
         #region Properties
@@ -102,8 +114,8 @@ namespace AirportPrj.Model
             }
         }
 
-        
-        public virtual Plane Plane
+        // тип самолета, с типом и количеством мест в нем
+        public Plane Plane
         {
             get => _plane;
             set
@@ -114,28 +126,51 @@ namespace AirportPrj.Model
             }
         }
 
-        [ForeignKey("Plane")]
-        public string PlaneID { get; set; }
-
+        // коллекция с местами в самолете, ограничена местами по типу
+        public ObservableCollection<Seat> Seats { get; set; } = new ObservableCollection<Seat>();
 
         #endregion
 
+        public void CreateSeats()
+        {
+            for (int i = 0; i < 200; i++)
+            {
+                Seats.Add(new Seat() { Number = $"{FlightID}_{(i+1).ToString()}" });
+            }
+        }
 
+        #region Events
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
     }
 
+    #region классы ArrivalFlight и DepartureFlight, созданные для того чтобы в БД создать две разные таблицы типа Flight
     class ArrivalFlight : Flight
     {
+        public ArrivalFlight()
+        {
+        }
+
+        public ArrivalFlight(string FlightId) : base(FlightId)
+        {
+        }
     }
 
     class DepartureFlight : Flight
     {
+        public DepartureFlight()
+        {
+        }
+        public DepartureFlight(string FlightId) : base(FlightId)
+        {
+        }
     }
+    #endregion
 
     // Статус рейса
     public enum FlightStatus
