@@ -19,7 +19,7 @@ namespace AirportPrj.Model
         private string _flightID;               // связующие звено
         private int _businessSeatsNumbers;      // количество мест бизнесс класса
         private int _firstClassSeatsNumbers;    // количество мест первого класса
-        private int _economSeatsNumbers;        // количество мест эконом класса
+        //private int _economSeatsNumbers;        // количество мест эконом класса
         #endregion
 
 

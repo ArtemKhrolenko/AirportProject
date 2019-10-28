@@ -1,5 +1,7 @@
 ﻿using AirportPrj.Model;
 using System;
+using System.Data.Entity.Validation;
+using System.Windows;
 
 namespace AirportPrj.DataBase
 {
@@ -55,38 +57,61 @@ namespace AirportPrj.DataBase
             #endregion
 
             #region Инициализация авиасообщений
-            var arrivalFlights = new[]
-{
-                new ArrivalFlight {FlightID = "KC 406", Time = new DateTime(1995, 9, 2), CityName = "Алматы", AirCompany = "Air Astana", Terminal = "A", GateID = "A1", FlightStatus = FlightStatus.Arrived, Plane = planes[0]},
-                new ArrivalFlight {FlightID = "PQ 7119", Time = new DateTime(1996, 9, 2), CityName = "Шарм-Эль-Шейх", AirCompany = "Sky Up Airlines", Terminal = "B", GateID = "A2", FlightStatus = FlightStatus.Canceled, Plane = planes[1]},
-                new ArrivalFlight {FlightID = "LO 8312", Time = new DateTime(1997, 9, 2), CityName = "Таллинн", AirCompany = "LOT Polish Airlines", Terminal = "C", GateID = "A3", FlightStatus = FlightStatus.ChekIn, Plane = planes[0]},
-                new ArrivalFlight {FlightID = "PS 5673", Time = new DateTime(1998, 9, 2), CityName = "Мюнхен", AirCompany = "Ukraine International Airlines", Terminal = "D", GateID = "B1", FlightStatus = FlightStatus.Delayed, Plane = planes[1]},
-                new ArrivalFlight {FlightID = "LH 2545", Time = new DateTime(1999, 9, 2), CityName = "Афины", AirCompany = "Lufthansa", Terminal = "A", GateID = "B2", FlightStatus = FlightStatus.DepartedAt, Plane = planes[0]},
-                new ArrivalFlight {FlightID = "LH 2544", Time = new DateTime(1985, 9, 2), CityName = "Франкфурт", AirCompany = "Air Astana", Terminal = "B", GateID = "B3", FlightStatus = FlightStatus.ExpectedAt, Plane = planes[1]},
-                new ArrivalFlight {FlightID = "QU 4440", Time = new DateTime(2000, 9, 2), CityName = "Цюрих", AirCompany = "LOT Polish Airlines", Terminal = "C", GateID = "C1", FlightStatus = FlightStatus.GateClosed, Plane = planes[0]},
-                new ArrivalFlight {FlightID = "PS 354", Time = new DateTime(2001, 9, 2), CityName = "Киев", AirCompany = "Azur Air Ukraine", Terminal = "D", GateID = "C2", FlightStatus = FlightStatus.InFlight, Plane = planes[1]},
-                new ArrivalFlight {FlightID = "LH 1494", Time = new DateTime(2002, 9, 2), CityName = "Минск", AirCompany = "Lufthansa", Terminal = "A", GateID = "D1", FlightStatus = FlightStatus.Unknown, Plane = planes[0]},
-                new ArrivalFlight {FlightID = "PS 472", Time = new DateTime(1999, 9, 2), CityName = "Брюсель", AirCompany = "Azur Air Ukraine", Terminal = "B", GateID = "D2", FlightStatus = FlightStatus.Arrived, Plane = planes[1]}
+            ArrivalFlight[] arrivalFlights = new ArrivalFlight[]
+            {
+                new ArrivalFlight("KC 406") {FlightID = "KC 406", Time = new DateTime(1995, 9, 2), CityName = "Алматы", AirCompany = "Air Astana", Terminal = "A", GateID = "A1", FlightStatus = FlightStatus.Arrived, Plane = planes[0]},
+                new ArrivalFlight("PQ 7119") {FlightID = "PQ 7119", Time = new DateTime(1996, 9, 2), CityName = "Шарм-Эль-Шейх", AirCompany = "Sky Up Airlines", Terminal = "B", GateID = "A2", FlightStatus = FlightStatus.Canceled, Plane = planes[1]},
+                new ArrivalFlight("LO 8312") {FlightID = "LO 8312", Time = new DateTime(1997, 9, 2), CityName = "Таллинн", AirCompany = "LOT Polish Airlines", Terminal = "C", GateID = "A3", FlightStatus = FlightStatus.ChekIn, Plane = planes[0]},
+                new ArrivalFlight("PS 5673") {FlightID = "PS 5673", Time = new DateTime(1998, 9, 2), CityName = "Мюнхен", AirCompany = "Ukraine International Airlines", Terminal = "D", GateID = "B1", FlightStatus = FlightStatus.Delayed, Plane = planes[1]},
+                new ArrivalFlight("LH 2545") {FlightID = "LH 2545", Time = new DateTime(1999, 9, 2), CityName = "Афины", AirCompany = "Lufthansa", Terminal = "A", GateID = "B2", FlightStatus = FlightStatus.DepartedAt, Plane = planes[0]},
+                new ArrivalFlight("LH 2544") {FlightID = "LH 2544", Time = new DateTime(1985, 9, 2), CityName = "Франкфурт", AirCompany = "Air Astana", Terminal = "B", GateID = "B3", FlightStatus = FlightStatus.ExpectedAt, Plane = planes[1]},
+                new ArrivalFlight("QU 4440") {FlightID = "QU 4440", Time = new DateTime(2000, 9, 2), CityName = "Цюрих", AirCompany = "LOT Polish Airlines", Terminal = "C", GateID = "C1", FlightStatus = FlightStatus.GateClosed, Plane = planes[0]},
+                new ArrivalFlight("PS 354") {FlightID = "PS 354", Time = new DateTime(2001, 9, 2), CityName = "Киев", AirCompany = "Azur Air Ukraine", Terminal = "D", GateID = "C2", FlightStatus = FlightStatus.InFlight, Plane = planes[1]},
+                new ArrivalFlight("LH 1494") {FlightID = "LH 1494", Time = new DateTime(2002, 9, 2), CityName = "Минск", AirCompany = "Lufthansa", Terminal = "A", GateID = "D1", FlightStatus = FlightStatus.Unknown, Plane = planes[0]},
+                new ArrivalFlight("PS 472") {FlightID = "PS 472", Time = new DateTime(1999, 9, 2), CityName = "Брюсель", AirCompany = "Azur Air Ukraine", Terminal = "B", GateID = "D2", FlightStatus = FlightStatus.Arrived, Plane = planes[1]}
             };
             Context.ArrivalFlight.AddRange(arrivalFlights);
 
             var departurelFlights = new[]
 {
-                new DepartureFlight {FlightID = "11111", Time = new DateTime(1995, 9, 2), CityName = "Алматы", AirCompany = "Air Astana", Terminal = "A", GateID = "A1", FlightStatus = FlightStatus.Arrived, Plane = planes[1]},
-                new DepartureFlight {FlightID = "22222", Time = new DateTime(1996, 9, 2), CityName = "Шарм-Эль-Шейх", AirCompany = "Sky Up Airlines", Terminal = "B", GateID = "A2", FlightStatus = FlightStatus.Canceled, Plane = planes[0]},
-                new DepartureFlight {FlightID = "33333", Time = new DateTime(1997, 9, 2), CityName = "Таллинн", AirCompany = "LOT Polish Airlines", Terminal = "C", GateID = "A3", FlightStatus = FlightStatus.ChekIn, Plane = planes[1]},
-                new DepartureFlight {FlightID = "44444", Time = new DateTime(1998, 9, 2), CityName = "Мюнхен", AirCompany = "Ukraine International Airlines", Terminal = "D", GateID = "B1", FlightStatus = FlightStatus.Delayed, Plane = planes[0]},
-                new DepartureFlight {FlightID = "55555", Time = new DateTime(1999, 9, 2), CityName = "Афины", AirCompany = "Lufthansa", Terminal = "A", GateID = "B2", FlightStatus = FlightStatus.DepartedAt, Plane = planes[1]},
-                new DepartureFlight {FlightID = "LH 2444", Time = new DateTime(1985, 9, 2), CityName = "Франкфурт", AirCompany = "Air Astana", Terminal = "B", GateID = "B3", FlightStatus = FlightStatus.ExpectedAt, Plane = planes[0]},
-                new DepartureFlight {FlightID = "QU 4441", Time = new DateTime(2000, 9, 2), CityName = "Цюрих", AirCompany = "LOT Polish Airlines", Terminal = "C", GateID = "C1", FlightStatus = FlightStatus.GateClosed, Plane = planes[1]},
-                new DepartureFlight {FlightID = "PS 355", Time = new DateTime(2001, 9, 2), CityName = "Киев", AirCompany = "Azur Air Ukraine", Terminal = "D", GateID = "C2", FlightStatus = FlightStatus.InFlight, Plane = planes[0]},
-                new DepartureFlight {FlightID = "LH 1495", Time = new DateTime(2002, 9, 2), CityName = "Минск", AirCompany = "Lufthansa", Terminal = "A", GateID = "D1", FlightStatus = FlightStatus.Unknown, Plane = planes[1]},
-                new DepartureFlight {FlightID = "PS 473", Time = new DateTime(1999, 9, 2), CityName = "Брюсель", AirCompany = "Azur Air Ukraine", Terminal = "B", GateID = "D2", FlightStatus = FlightStatus.Arrived, Plane = planes[0]}
+                new DepartureFlight("KC 407") {FlightID = "KC 407", Time = new DateTime(1995, 9, 2), CityName = "Алматы", AirCompany = "Air Astana", Terminal = "A", GateID = "A1", FlightStatus = FlightStatus.Arrived, Plane = planes[1]},
+                new DepartureFlight("PQ 7120") {FlightID = "PQ 7120", Time = new DateTime(1996, 9, 2), CityName = "Шарм-Эль-Шейх", AirCompany = "Sky Up Airlines", Terminal = "B", GateID = "A2", FlightStatus = FlightStatus.Canceled, Plane = planes[0]},
+                new DepartureFlight("LO 8313") {FlightID = "LO 8313", Time = new DateTime(1997, 9, 2), CityName = "Таллинн", AirCompany = "LOT Polish Airlines", Terminal = "C", GateID = "A3", FlightStatus = FlightStatus.ChekIn, Plane = planes[1]},
+                new DepartureFlight("PS 5674") {FlightID = "PS 5674", Time = new DateTime(1998, 9, 2), CityName = "Мюнхен", AirCompany = "Ukraine International Airlines", Terminal = "D", GateID = "B1", FlightStatus = FlightStatus.Delayed, Plane = planes[0]},
+                new DepartureFlight("LH 2445") {FlightID = "LH 2445", Time = new DateTime(1999, 9, 2), CityName = "Афины", AirCompany = "Lufthansa", Terminal = "A", GateID = "B2", FlightStatus = FlightStatus.DepartedAt, Plane = planes[1]},
+                new DepartureFlight("LH 2444") {FlightID = "LH 2444", Time = new DateTime(1985, 9, 2), CityName = "Франкфурт", AirCompany = "Air Astana", Terminal = "B", GateID = "B3", FlightStatus = FlightStatus.ExpectedAt, Plane = planes[0]},
+                new DepartureFlight("QU 4441") {FlightID = "QU 4441", Time = new DateTime(2000, 9, 2), CityName = "Цюрих", AirCompany = "LOT Polish Airlines", Terminal = "C", GateID = "C1", FlightStatus = FlightStatus.GateClosed, Plane = planes[1]},
+                new DepartureFlight("PS 355") {FlightID = "PS 355", Time = new DateTime(2001, 9, 2), CityName = "Киев", AirCompany = "Azur Air Ukraine", Terminal = "D", GateID = "C2", FlightStatus = FlightStatus.InFlight, Plane = planes[0]},
+                new DepartureFlight("LH 1495") {FlightID = "LH 1495", Time = new DateTime(2002, 9, 2), CityName = "Минск", AirCompany = "Lufthansa", Terminal = "A", GateID = "D1", FlightStatus = FlightStatus.Unknown, Plane = planes[1]},
+                new DepartureFlight("PS 473") {FlightID = "PS 473", Time = new DateTime(1999, 9, 2), CityName = "Брюсель", AirCompany = "Azur Air Ukraine", Terminal = "B", GateID = "D2", FlightStatus = FlightStatus.Arrived, Plane = planes[0]}
             };
             Context.DepartureFlight.AddRange(departurelFlights);
             #endregion
 
-            Context.SaveChanges();  // сохраняем все изменения в БД
+            // отлавливаем ошибку сохранения в БД
+            try
+            {
+                Context.SaveChanges(); // сохраняем все изменения в БД
+            }
+            catch (DbEntityValidationException ex)
+            {
+                string lg = "";
+                foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                {
+                    lg = "Object: " + validationError.Entry.Entity.ToString();
+                    lg += " ";
+                        foreach (DbValidationError err in validationError.ValidationErrors)
+                        {
+                            lg += err.ErrorMessage + "";
+                        }
+                }
+                MessageBox.Show(lg);
+            }
+
+
+
+
+            //Context.SaveChanges();  // сохраняем все изменения в БД
             IsRebuid = false;       // сбрасываем флаг - пока не используется
         }
     }

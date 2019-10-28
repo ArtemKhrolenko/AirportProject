@@ -51,7 +51,7 @@ namespace AirportPrj.ViewModel
                                         Terminal = FlightInfo.Terminal,
                                         GateID = FlightInfo.GateID,
                                         FlightStatus = FlightInfo.FlightStatus
-                                    });
+                                    }).CreateSeats();
                                     break;
                                 case DepartureFlight _:
                                     Context.DepartureFlight.Add(new DepartureFlight()
@@ -63,7 +63,7 @@ namespace AirportPrj.ViewModel
                                         Terminal = FlightInfo.Terminal,
                                         GateID = FlightInfo.GateID,
                                         FlightStatus = FlightInfo.FlightStatus
-                                    });
+                                    }).CreateSeats();
                                     break;
                                 default:
                                     break;

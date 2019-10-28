@@ -12,10 +12,11 @@ namespace AirportPrj.Model
         private string _number;               // номер места
         private SeatClass _seatType;         // тип места
         private Passenger _passenger;         // сылка на пассажира
+        private Flight _flight;
         #endregion
 
         #region Properties
-
+        [Key]
         public string Number
         {
             get => _number;
@@ -45,6 +46,17 @@ namespace AirportPrj.Model
             {
                 if (value == _passenger) return;
                 _passenger = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Flight Flight
+        {
+            get => _flight;
+            set
+            {
+                if (value == _flight) return;
+                _flight = value;
                 OnPropertyChanged();
             }
         }

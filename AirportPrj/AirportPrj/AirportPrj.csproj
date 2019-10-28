@@ -105,6 +105,7 @@
     <Compile Include="DataBase\ArrivalFlightConfig.cs" />
     <Compile Include="DataBase\InitDB.cs" />
     <Compile Include="DataBase\PassengerConfig.cs" />
+    <Compile Include="DataBase\SeatConfig.cs" />
     <Compile Include="DataBase\PlaneConfig.cs" />
     <Compile Include="DataBase\TicketConfig.cs" />
     <Compile Include="Model\Plane.cs" />

@@ -21,16 +21,17 @@ namespace AirportPrj.Model
         private string _gateID;                     // gate
         private FlightStatus _flightStatus;         // статус
         private Plane _plane;                       // тип самолета
-        //private ObservableCollection<Seat> _seats;  // места в самолете
+                                                    //private ObservableCollection<Seat> _seats;  // места в самолете
         #endregion
 
         #region Constructor
         public Flight()
+        {            
+        }
+        public Flight(string FlightID)
         {
-            for (int i = 0; i < Plane.TotalSeatsNumbers; i++)
-            {
-                Seats.Add(new Seat());
-            }
+            this.FlightID = FlightID;
+            CreateSeats();
         }
         #endregion
 
@@ -123,12 +124,20 @@ namespace AirportPrj.Model
                 _plane = value;
                 OnPropertyChanged();
             }
-        }                                           
+        }
 
         // коллекция с местами в самолете, ограничена местами по типу
-        public ObservableCollection<Seat> Seats { get; set; }           
+        public ObservableCollection<Seat> Seats { get; set; } = new ObservableCollection<Seat>();
 
         #endregion
+
+        public void CreateSeats()
+        {
+            for (int i = 0; i < 200; i++)
+            {
+                Seats.Add(new Seat() { Number = $"{FlightID}_{(i+1).ToString()}" });
+            }
+        }
 
         #region Events
         public event PropertyChangedEventHandler PropertyChanged;
@@ -143,10 +152,23 @@ namespace AirportPrj.Model
     #region классы ArrivalFlight и DepartureFlight, созданные для того чтобы в БД создать две разные таблицы типа Flight
     class ArrivalFlight : Flight
     {
+        public ArrivalFlight()
+        {
+        }
+
+        public ArrivalFlight(string FlightId) : base(FlightId)
+        {
+        }
     }
 
     class DepartureFlight : Flight
     {
+        public DepartureFlight()
+        {
+        }
+        public DepartureFlight(string FlightId) : base(FlightId)
+        {
+        }
     }
     #endregion
 
