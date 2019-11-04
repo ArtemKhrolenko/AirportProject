@@ -4,6 +4,8 @@ using System.Data.Entity;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using AirportPrj.View.UserControls;
+using System.Windows;
 
 namespace AirportPrj.ViewModel
 {
@@ -11,15 +13,48 @@ namespace AirportPrj.ViewModel
     {
         public AirportContext Context { get; }
 
+
         public TicketTabViewModel()
         {
+
         }
+
         public Ticket TicketInfo { get; set; } = new Ticket();
         public Ticket SelectedTicket { get; set; }
+
+        private DepartureFlight selectedflightID;
+        public DepartureFlight SelectedflightID
+        {
+            get
+            {
+                //ContentGrid.Children.Clear();
+
+                //switch (selectedflightID.Plane.Manufacturer)
+                //{
+                //    case "Boeing":
+                //        ContentGrid.Children.Add(userControlBoing);
+                //        break;
+                //    case "AirBus":
+                //        ContentGrid.Children.Add(userControlAirbus);
+                //        break;
+                //    default:
+                //        break;
+                //}
+
+                return selectedflightID;
+            }
+            set
+            {
+                selectedflightID = value;
+            }
+        }
+
         public TicketTabViewModel(AirportContext context)
         {
             Context = context;
-            Context.Passengers.Load();
+            Context.DepartureFlight.Load();
+
+            // загружаем ресурсы пользовательских элементов
         }
 
         #region Commands

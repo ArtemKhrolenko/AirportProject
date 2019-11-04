@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AirportPrj.Model
 {
-    class Passenger : INotifyPropertyChanged
+    public class Passenger : INotifyPropertyChanged
     {
         private string _firstName;
         private string _lastName;
@@ -120,13 +120,13 @@ namespace AirportPrj.Model
         }
     }
 
-    enum Sex
+    public enum Sex
     {
         Male,
         Female
     }
 
-    enum PassClass
+    public enum PassClass
     {
         Business,
         Economy

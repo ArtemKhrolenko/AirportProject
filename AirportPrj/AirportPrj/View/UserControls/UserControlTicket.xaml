@@ -22,9 +22,8 @@
 
     <Grid x:Name="TicketsGrid" d:DataContext="{d:DesignInstance d:Type=local:TicketTabViewModel, IsDesignTimeCreatable=True}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="90*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="293*"/>
@@ -44,7 +43,7 @@
             </i:Interaction.Triggers>
         </DataGrid>-->
 
-        <ListBox Grid.Column="0" Grid.Row="0" Grid.RowSpan ="2" x:Name="DataGridFlight" ItemsSource="{Binding Context.DepartureFlight.Local}" SelectedItem="{Binding SelectedFliightID, Mode=TwoWay}" Margin="0,0,60,0">
+        <ListBox Grid.Column="0" Grid.Row="0" Grid.RowSpan ="2" x:Name="DataGridFlight" ItemsSource="{Binding Context.DepartureFlight.Local}" SelectedItem="{Binding SelectedflightID, Mode=TwoWay}" Margin="0,0,60,0" SelectionChanged="DataGridFlight_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
@@ -53,6 +52,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <Grid x:Name="ContentGrid" Grid.Column="1" Grid.Row="0" >
+        </Grid>
 
     </Grid>
 

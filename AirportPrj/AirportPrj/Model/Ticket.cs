@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace AirportPrj.Model
 {
-    class Ticket : INotifyPropertyChanged
+    public class Ticket : INotifyPropertyChanged
     {
         #region Fields
         private string _ticketNumb;                 // номер билета

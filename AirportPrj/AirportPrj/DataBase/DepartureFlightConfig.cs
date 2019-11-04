@@ -4,7 +4,7 @@ using AirportPrj.Model;
 
 namespace AirportPrj.DataBase
 {
-    class DepartureFlightConfig : EntityTypeConfiguration<DepartureFlight>
+    public class DepartureFlightConfig : EntityTypeConfiguration<DepartureFlight>
     {
         public DepartureFlightConfig()
         {

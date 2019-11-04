@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace AirportPrj.Model
 {
-    class Flight : INotifyPropertyChanged
+    public class Flight : INotifyPropertyChanged
     {
         #region Fields
         private string _flightID;                   // номер рейса
@@ -152,7 +152,7 @@ namespace AirportPrj.Model
     }
 
     #region классы ArrivalFlight и DepartureFlight, созданные для того чтобы в БД создать две разные таблицы типа Flight
-    class ArrivalFlight : Flight
+    public class ArrivalFlight : Flight
     {
         public ArrivalFlight()
         {
@@ -163,7 +163,7 @@ namespace AirportPrj.Model
         }
     }
 
-    class DepartureFlight : Flight
+    public class DepartureFlight : Flight
     {
         public DepartureFlight()
         {

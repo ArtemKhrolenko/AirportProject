@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AirportPrj.Model
 {
-    class Plane : INotifyPropertyChanged
+    public class Plane : INotifyPropertyChanged
     {
         
         #region Fields
