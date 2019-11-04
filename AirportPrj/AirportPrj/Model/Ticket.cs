@@ -9,13 +9,9 @@ namespace AirportPrj.Model
     class Ticket : INotifyPropertyChanged
     {
         #region Fields
-        private string _flightID;               // номер рейса
-        private string _ticketNumb;               // номер билета
+        private string _ticketNumb;                 // номер билета
 
-        //[ForeignKey("FlightID")]
-        //private Passenger Passenger { get; set; }   // пассажир
-
-        private decimal _price;                 // цена
+        private decimal _price;                     // цена
         #endregion
 
         #region Properties
@@ -31,17 +27,6 @@ namespace AirportPrj.Model
             }
         }
 
-        public string FlightID
-        {
-            get => _flightID;
-            set
-            {
-                if (value == _flightID) return;
-                _flightID = value;
-                OnPropertyChanged();
-            }
-        }
-
         public decimal Price
         {
             get => _price;
@@ -53,6 +38,8 @@ namespace AirportPrj.Model
             }
         }
 
+       
+        //public Passenger Passenger { get; set; }   // пассажир
         #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;

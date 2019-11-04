@@ -31,7 +31,7 @@ namespace AirportPrj.Model
         public Flight(string FlightID)
         {
             this.FlightID = FlightID;
-            CreateSeats();
+            //CreateSeats();
         }
         #endregion
 
@@ -114,6 +114,8 @@ namespace AirportPrj.Model
             }
         }
 
+        [ForeignKey ("Plane")]
+        public string PlaneID { get; set; }        
         // тип самолета, с типом и количеством мест в нем
         public Plane Plane
         {
@@ -133,7 +135,7 @@ namespace AirportPrj.Model
 
         public void CreateSeats()
         {
-            for (int i = 0; i < 200; i++)
+            for (int i = 0; i < Plane.TotalSeatsNumbers; i++)
             {
                 Seats.Add(new Seat() { Number = $"{FlightID}_{(i+1).ToString()}" });
             }

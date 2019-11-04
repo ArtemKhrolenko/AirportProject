@@ -10,7 +10,7 @@ namespace AirportPrj.DataBase
         {
             HasKey(ticket => ticket.TicketNumb);
             Property(ticket => ticket.TicketNumb).IsRequired().HasMaxLength(50);
-            Property(ticket => ticket.FlightID).IsRequired();
+            //Property(ticket => ticket.FlightID).IsRequired();
             Property(ticket => ticket.Price).IsRequired();
 
             ToTable("Ticket");

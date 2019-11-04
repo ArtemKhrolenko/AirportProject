@@ -35,7 +35,7 @@ namespace AirportPrj.ViewModel
                             Context.Tickets.Add(new Ticket()
                             {
                                 TicketNumb = TicketInfo.TicketNumb,
-                                FlightID = TicketInfo.FlightID,
+                                //FlightID = TicketInfo.FlightID,
                                 Price = TicketInfo.Price,
                             });
                             Context.SaveChanges();
@@ -55,7 +55,7 @@ namespace AirportPrj.ViewModel
                 () =>
                 {
                     SelectedTicket.TicketNumb = TicketInfo.TicketNumb;
-                    SelectedTicket.FlightID = TicketInfo.FlightID;
+                    //SelectedTicket.FlightID = TicketInfo.FlightID;
                     SelectedTicket.Price = TicketInfo.Price;
                     Context.SaveChanges();
                 },
@@ -63,8 +63,8 @@ namespace AirportPrj.ViewModel
                 {
                     if (SelectedTicket == null) return false;
                     if (
-                         string.IsNullOrEmpty(TicketInfo.FlightID)
-                        || TicketInfo.Price == 0)
+                         //string.IsNullOrEmpty(TicketInfo.FlightID)
+                        TicketInfo.Price == 0)
                     {
                         return false;
                     }
@@ -90,7 +90,7 @@ namespace AirportPrj.ViewModel
                         () =>
                         {
                             TicketInfo.TicketNumb = SelectedTicket.TicketNumb;
-                            TicketInfo.FlightID = SelectedTicket.FlightID;
+                            //TicketInfo.FlightID = SelectedTicket.FlightID;
                             TicketInfo.Price = SelectedTicket.Price;
                         },
                         () => SelectedTicket != null));

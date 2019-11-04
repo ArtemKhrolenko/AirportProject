@@ -23,6 +23,7 @@
     <Grid x:Name="TicketsGrid" d:DataContext="{d:DesignInstance d:Type=local:TicketTabViewModel, IsDesignTimeCreatable=True}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="43*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -43,15 +44,11 @@
             </i:Interaction.Triggers>
         </DataGrid>-->
 
-        <ListBox Grid.Column="0" Grid.Row="0" Grid.RowSpan ="2" x:Name="DataGrid" ItemsSource="{Binding Context.Tickets.Local}" SelectedItem="{Binding SelectedTicket, Mode=TwoWay}">
+        <ListBox Grid.Column="0" Grid.Row="0" Grid.RowSpan ="2" x:Name="DataGridFlight" ItemsSource="{Binding Context.DepartureFlight.Local}" SelectedItem="{Binding SelectedFliightID, Mode=TwoWay}" Margin="0,0,60,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
-                        <!--<TextBlock FontSize="18" Text="qqqqq" />-->
-
-                        <!--<TextBlock FontSize="18" Text="{Binding Path=Title}" />-->
                         <TextBlock FontSize="12" Text="{Binding Path= FlightID}"/>
-                        <TextBlock FontSize="12" Text="{Binding Path= TicketNumb}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

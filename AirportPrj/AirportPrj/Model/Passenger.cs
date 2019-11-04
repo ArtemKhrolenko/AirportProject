@@ -94,6 +94,8 @@ namespace AirportPrj.Model
                 OnPropertyChanged();
             }
         }
+        
+        [ForeignKey("Flight")]
         public string FlightID
         {
             get => _flightID;
@@ -104,9 +106,13 @@ namespace AirportPrj.Model
                 OnPropertyChanged();
             }
         }
+        public Flight Flight { get; set; }
 
-        [ForeignKey("FlightID")]
+
+        [ForeignKey("Ticket")]
+        public string TicketNumb { get; set; }
         public Ticket Ticket { get; set; }
+
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
