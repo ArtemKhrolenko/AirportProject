@@ -31,7 +31,7 @@ namespace AirportPrj.Model
         public Flight(string FlightID)
         {
             this.FlightID = FlightID;
-            //CreateSeats();
+            CreateSeats();
         }
         #endregion
 
@@ -135,7 +135,7 @@ namespace AirportPrj.Model
 
         public void CreateSeats()
         {
-            for (int i = 0; i < Plane.TotalSeatsNumbers; i++)
+            for (int i = 0; i < 20; i++)
             {
                 Seats.Add(new Seat() { Number = $"{FlightID}_{(i+1).ToString()}" });
             }

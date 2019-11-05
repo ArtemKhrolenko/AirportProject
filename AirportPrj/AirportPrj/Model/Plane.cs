@@ -17,9 +17,9 @@ namespace AirportPrj.Model
         private string _manufacturer;           // производитель
         private string _model;                  // модель воздушного судна
         private string _flightID;               // связующие звено
-        private int _businessSeatsNumbers;      // количество мест бизнесс класса
+        private int _businessSeatsNumbers;      // количество мест бизнес класса
         private int _firstClassSeatsNumbers;    // количество мест первого класса
-        //private int _economSeatsNumbers;        // количество мест эконом класса
+        private int _economSeatsNumbers;        // количество мест эконом класса
         #endregion
 
 
@@ -86,7 +86,13 @@ namespace AirportPrj.Model
         {
             get
             {
-                return TotalSeatsNumbers - (EconomSeatsNumbers + FirstClassSeatsNumbers);
+                return TotalSeatsNumbers - (BusinessSeatsNumbers + FirstClassSeatsNumbers);
+            }
+            set
+            {
+                if (value == _economSeatsNumbers) return;
+                _economSeatsNumbers = value;
+                OnPropertyChanged();
             }
         }
 

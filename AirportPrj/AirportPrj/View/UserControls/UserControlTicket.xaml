@@ -9,7 +9,7 @@
              xmlns:mod="clr-namespace:AirportPrj.Model"
              xmlns:conv="clr-namespace:AirportPrj.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="751" d:DesignWidth="1109">
 
     <UserControl.Resources>
         <Style TargetType="DataGrid">
@@ -22,28 +22,15 @@
 
     <Grid x:Name="TicketsGrid" d:DataContext="{d:DesignInstance d:Type=local:TicketTabViewModel, IsDesignTimeCreatable=True}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="15*"/>
-            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="800*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="293*"/>
-            <RowDefinition Height="207*"/>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="225*"/>
         </Grid.RowDefinitions>
 
-        <!--<DataGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" x:Name="DataGrid" ItemsSource="{Binding Context.Tickets.Local}" SelectedItem="{Binding SelectedTicket, Mode=TwoWay}" Margin="10,0,0,0" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="TicketID" Width="100"  Binding="{Binding TicketID}"/>
-                <DataGridTextColumn Header="FlightID" Width="100" Binding="{Binding FlightID}"/>
-                <DataGridTextColumn Header="Price" Width="100" Binding="{Binding Price}"/>
-            </DataGrid.Columns>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding TicketGridSelectionChangedCommand}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </DataGrid>-->
-
-        <ListBox Grid.Column="0" Grid.Row="0" Grid.RowSpan ="2" x:Name="DataGridFlight" ItemsSource="{Binding Context.DepartureFlight.Local}" SelectedItem="{Binding SelectedflightID, Mode=TwoWay}" Margin="0,0,60,0" SelectionChanged="DataGridFlight_SelectionChanged">
+        <ListBox Grid.Column="0" Grid.Row="0" Grid.RowSpan ="2" x:Name="DataGridFlight" ItemsSource="{Binding Context.DepartureFlight.Local}" SelectedItem="{Binding SelectedflightID, Mode=TwoWay}" Margin="10,0,0,0" SelectionChanged="DataGridFlight_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
@@ -51,11 +38,84 @@
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding FlightSelectionChangedCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </ListBox>
 
         <Grid x:Name="ContentGrid" Grid.Column="1" Grid.Row="0" >
         </Grid>
 
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="40*"/>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Column="0" Grid.Row="0" >
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Производитель:"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Модель:"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Места бизнес класса:"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Места первого класса:"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Места эконом класса:"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row="0">
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding PlaneInfo.Manufacturer, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding PlaneInfo.Model, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding PlaneInfo.BusinessSeatsNumbers, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding PlaneInfo.FirstClassSeatsNumbers, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding PlaneInfo.EconomSeatsNumbers, Mode=TwoWay}"/>
+            </StackPanel>
+
+            <!-- < Tickets CRUD > -->
+            <Border Grid.Row="1" Grid.Column="2" BorderThickness="1" Margin="0" CornerRadius="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding ElementName=DataGrid, Path=Columns[0].Header, StringFormat={}{0}:}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="5" Text="{Binding ElementName=DataGrid, Path=Columns[1].Header, StringFormat={}{0}:}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" Text="{Binding ElementName=DataGrid, Path=Columns[2].Header, StringFormat={}{0}:}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="5" Text="{Binding ElementName=DataGrid, Path=Columns[3].Header, StringFormat={}{0}:}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Margin="5" Text="{Binding ElementName=DataGrid, Path=Columns[4].Header, StringFormat={}{0}:}"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Margin="5" Text="{Binding ElementName=DataGrid, Path=Columns[5].Header, StringFormat={}{0}:}"/>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Margin="5" Text="{Binding ElementName=DataGrid, Path=Columns[6].Header, StringFormat={}{0}:}"/>
+                    <TextBlock Grid.Row="7" Grid.Column="0" Margin="5" Text="{Binding ElementName=DataGrid, Path=Columns[7].Header, StringFormat={}{0}:}"/>
+                    <TextBlock Grid.Row="8" Grid.Column="0" Margin="5" Text="{Binding ElementName=DataGrid, Path=Columns[8].Header, StringFormat={}{0}:}"/>
+
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding PassengerInfo.FirstName, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding PassengerInfo.LastName, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="3" Text="{Binding PassengerInfo.Nationality, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Margin="3" Text="{Binding PassengerInfo.Passport, Mode=TwoWay}"/>
+                    <DatePicker Grid.Row="4" Grid.Column="1" Margin="3" SelectedDate="{Binding PassengerInfo.DateOfBirth, Mode=TwoWay}"/>
+
+                    <!--<ComboBox Grid.Row="5" Grid.Column="1" Margin="3"  ItemsSource="{Binding Source={StaticResource enumValues}}" SelectedIndex="{Binding PassengerInfo.Sex, Mode=TwoWay, Converter={StaticResource sexConverter}}"/>
+                    <ComboBox Grid.Row="6" Grid.Column="1" Margin="3"  ItemsSource="{Binding Source={StaticResource passValues}}" SelectedIndex="{Binding PassengerInfo.PassClass, Mode=TwoWay, Converter={StaticResource passClassConverter}}"/>-->
+
+                    <TextBox Grid.Row="7" Grid.Column="1" Margin="3" Text="{Binding PassengerInfo.FlightID, Mode=TwoWay}"/>
+
+                    <DockPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="{Binding RelativeSource={RelativeSource AncestorType=Grid, Mode=FindAncestor}, Path=ActualWidth}">
+                        <Button Margin="5" Padding="10,0,10,0" Content="Add" Command="{Binding AddPassengerCommand}"/>
+                        <Button Margin="5" Padding="10,0,10,0" Content="Update" Command="{Binding UpdatePassengerCommand}"/>
+                        <Button Margin="5" Padding="10,0,10,0" Content="Delete" Command="{Binding DeletePassengerCommand}"/>
+                    </DockPanel>
+                </Grid>
+            </Border>
+            <!-- </ Tickets CRUD > -->
+        </Grid>
     </Grid>
 
 

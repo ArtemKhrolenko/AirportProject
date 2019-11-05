@@ -11,57 +11,52 @@ namespace AirportPrj.ViewModel
 {
     class TicketTabViewModel : ViewModelBase
     {
+
+        #region Fields
+
+        #endregion
+
+        #region Propirties
+        // cсылка на БД
         public AirportContext Context { get; }
 
+        // свойства связаные с билетами
+        public Ticket TicketInfo { get; set; } = new Ticket();
+        public Ticket SelectedTicket { get; set; }
 
+        // свойства связаные с рейсом
+        public Plane PlaneInfo { get; set; } = new Plane();
+        public DepartureFlight SelectedflightID { get; set; }
+
+
+        // свойства связаные с местом
+        public DepartureFlight FlightInfo { get; set; } = new DepartureFlight();
+        public DepartureFlight SelectedSeatflightID { get; set; }
+        public Seat SelectedSeatID { get; set; } = new Seat();
+        public string SeatID { get; set; }
+
+        #endregion
+
+        #region Constructor
         public TicketTabViewModel()
         {
 
         }
-
-        public Ticket TicketInfo { get; set; } = new Ticket();
-        public Ticket SelectedTicket { get; set; }
-
-        private DepartureFlight selectedflightID;
-        public DepartureFlight SelectedflightID
-        {
-            get
-            {
-                //ContentGrid.Children.Clear();
-
-                //switch (selectedflightID.Plane.Manufacturer)
-                //{
-                //    case "Boeing":
-                //        ContentGrid.Children.Add(userControlBoing);
-                //        break;
-                //    case "AirBus":
-                //        ContentGrid.Children.Add(userControlAirbus);
-                //        break;
-                //    default:
-                //        break;
-                //}
-
-                return selectedflightID;
-            }
-            set
-            {
-                selectedflightID = value;
-            }
-        }
-
         public TicketTabViewModel(AirportContext context)
         {
             Context = context;
             Context.DepartureFlight.Load();
-
-            // загружаем ресурсы пользовательских элементов
         }
+        #endregion
+
 
         #region Commands
         private RelayCommand _addTicketCommand;
         private RelayCommand _updateTicketCommand;
         private RelayCommand _deleteTicketCommand;
         private RelayCommand _ticketGridSelectionChangedCommand;
+        private RelayCommand _flightSelectionChangedCommand;
+        private RelayCommand _seatSelectionChangedCommand;
 
         public ICommand AddTicketCommand => _addTicketCommand ??
                     (_addTicketCommand = new RelayCommand(
@@ -129,6 +124,46 @@ namespace AirportPrj.ViewModel
                             TicketInfo.Price = SelectedTicket.Price;
                         },
                         () => SelectedTicket != null));
+            }
+        }
+
+        // команда выделения в ListBox по FlightId
+        public ICommand FlightSelectionChangedCommand
+        {
+            get
+            {
+                return _flightSelectionChangedCommand ??
+                    (_flightSelectionChangedCommand = new RelayCommand(
+                        () =>
+                        {
+                            PlaneInfo.PlaneID = SelectedflightID.Plane.PlaneID;
+                            PlaneInfo.Manufacturer = SelectedflightID.Plane.Manufacturer;
+                            PlaneInfo.Model = SelectedflightID.Plane.Model;
+
+                            PlaneInfo.TotalSeatsNumbers = SelectedflightID.Plane.TotalSeatsNumbers;             // вначале инициализация мест, для корректного подсчета эконом
+                            PlaneInfo.BusinessSeatsNumbers = SelectedflightID.Plane.BusinessSeatsNumbers;
+                            PlaneInfo.FirstClassSeatsNumbers = SelectedflightID.Plane.FirstClassSeatsNumbers;
+                            PlaneInfo.EconomSeatsNumbers = SelectedflightID.Plane.EconomSeatsNumbers;
+                        },
+                        () => SelectedflightID != null));
+            }
+        }
+
+        // команда выделения Seat
+        public ICommand SeatSelectionChangedCommand
+        {
+            get
+            {
+                return _seatSelectionChangedCommand ??
+                    (_seatSelectionChangedCommand = new RelayCommand(
+                        () =>
+                        {
+                            //MessageBox.Show("tttt");
+                            MessageBox.Show(SeatID + " - " + SelectedflightID.Seats[0].Number);
+                            /*SelectedSeatflightID.Seats*/
+                            ;
+                        },
+                        () => SelectedSeatID != null));
             }
         }
 
