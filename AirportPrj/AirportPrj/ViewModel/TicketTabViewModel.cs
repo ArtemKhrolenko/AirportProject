@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.ComponentModel;
 using AirportPrj.Helper;
+using System;
 
 namespace AirportPrj.ViewModel
 {
@@ -60,7 +61,7 @@ namespace AirportPrj.ViewModel
         private RelayCommand _deleteTicketCommand;
         private RelayCommand _ticketGridSelectionChangedCommand;
         private RelayCommand _flightSelectionChangedCommand;
-        private RelayCommand _seatSelectionChangedCommand;
+        private CustomRelayCommand _seatSelectionChangedCommand;
         //private ICommand _onButtonClickCommand;
         private string seatID;
 
@@ -161,15 +162,19 @@ namespace AirportPrj.ViewModel
             get
             {
                 return _seatSelectionChangedCommand ??
-                    (_seatSelectionChangedCommand = new RelayCommand(
-                        () =>
+                    (_seatSelectionChangedCommand = new CustomRelayCommand(
+                        (obj) =>
                         {
-                            MessageBox.Show(SelectedButton.Name);
-                            MessageBox.Show("tttt");
+                            //MessageBox.Show( ((Button)obj).Tag.ToString());
+                            //MessageBox.Show(obj.GetType().ToString());
+                            MessageBox.Show(obj.ToString());
+
+
+                            //MessageBox.Show("tttt");
                             //MessageBox.Show(SeatID + " - " + SelectedflightID.Seats[0].Number);
                             /*SelectedSeatflightID.Seats*/
                         },
-                        () => SelectedSeatID != null));
+                        (obj) => SelectedSeatID != null));
             }
         }
 
@@ -196,5 +201,33 @@ namespace AirportPrj.ViewModel
         //    }
         //}
 
+    }
+
+    public class CustomRelayCommand : ICommand
+    {
+        private Action<object> execute;
+        private Func<object, bool> canExecute;
+       
+        event EventHandler ICommand.CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public CustomRelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        {
+            this.execute = execute;
+            this.canExecute = canExecute;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return this.canExecute == null || this.canExecute(parameter);
+        }
+
+        public void Execute(object parameter)
+        {
+            this.execute(parameter);
+        }
     }
 }

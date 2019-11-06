@@ -29,7 +29,14 @@
             <!--DataContext="{Binding Context.DepartureFlight.Local}">-->
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
-                    <i:InvokeCommandAction Command="{Binding SeatSelectionChangedCommand}" CommandParameter="{Binding SelectedButton, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentControl}}}"/>
+                    <i:InvokeCommandAction 
+                        Command="{Binding SeatSelectionChangedCommand}" 
+                        CommandParameter="{Binding Path=Name, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentControl},AncestorLevel=2}}"/>
+
+                    <!--CommandParameter="{Binding RelativeSource=
+                                   {RelativeSource
+                                    Mode=FindAncestor,
+                                    AncestorType={x:Type ContentControl}}}"/>-->
                     <!--CommandParameter="{Binding SelectedSeatflightID}"-->
                 </i:EventTrigger>
             </i:Interaction.Triggers>
@@ -44,8 +51,8 @@
         </Grid.Background>
          <!--1-й ряд-->
         <ContentControl Margin="233,172,0,0" Content="{StaticResource MySeat}" Name="qqqq"/>
-        <!--<ContentControl Margin="233,187,0,0" Content="{StaticResource MySeat}" Tag="2"/>
-        <ContentControl Margin="233,202,0,0" Content="{StaticResource MySeat}" Tag="3"/>
+        <!--<ContentControl Margin="233,187,0,0" Content="{StaticResource MySeat}" Name="2"/>-->
+        <!--<ContentControl Margin="233,202,0,0" Content="{StaticResource MySeat}" Tag="3"/>
         <ContentControl Margin="233,238,0,0" Content="{StaticResource MySeat}" Tag="4"/>
         <ContentControl Margin="233,253,0,0" Content="{StaticResource MySeat}" Tag="5"/>
         <ContentControl Margin="233,268,0,0" Content="{StaticResource MySeat}" Tag="6"/>-->

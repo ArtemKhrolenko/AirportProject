@@ -252,13 +252,6 @@
     <Resource Include="Images\airplane_landing_32px.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AirportPrj.Properties.Settings.AirportDBConnectionString.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="AirportPrj.Properties.Settings.AirportDBConnectionString_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>AirportPrj.Properties.Settings.AirportDBConnectionString.mdf</DependentUpon>
-    </Content>
     <Resource Include="Images\airbus A319.png" />
     <Resource Include="Images\boing 737 300.png" />
   </ItemGroup>
