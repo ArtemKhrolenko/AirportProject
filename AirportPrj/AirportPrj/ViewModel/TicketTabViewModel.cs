@@ -36,7 +36,7 @@ namespace AirportPrj.ViewModel
         public DepartureFlight FlightInfo { get; set; } = new DepartureFlight();
         public DepartureFlight SelectedSeatflightID { get; set; }
         public Seat SelectedSeatID { get; set; } = new Seat();
-        public Button SelectedButton { get; set; }
+        public Button SelectedButton { get; set; } = new Button();
         public string SeatID {get;  set;}
 
         #endregion
@@ -164,12 +164,12 @@ namespace AirportPrj.ViewModel
                     (_seatSelectionChangedCommand = new RelayCommand(
                         () =>
                         {
-                            MessageBox.Show(SelectedButton.Tag.ToString());
-                            //MessageBox.Show("tttt");
+                            MessageBox.Show(SelectedButton.Name);
+                            MessageBox.Show("tttt");
                             //MessageBox.Show(SeatID + " - " + SelectedflightID.Seats[0].Number);
                             /*SelectedSeatflightID.Seats*/
                         },
-                        () => SelectedButton != null));
+                        () => SelectedSeatID != null));
             }
         }
 
