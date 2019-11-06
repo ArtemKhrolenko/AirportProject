@@ -17,23 +17,20 @@
                 <Setter Property="Button.Width" Value="15" />
             </Style.Setters>
         </Style>
+        
         <Style TargetType="Button">
             <Style.Setters>
                 <Setter Property="Background" Value="Silver"/>
             </Style.Setters>
 
-            <!--<Style.Triggers>
-                <DataTrigger Binding="{Binding SeatID}" Value="eeee">
-                    --><!--<Setter Property="IsEnabled" Value="True"/>--><!--
-                </DataTrigger>
-            </Style.Triggers>-->
-
         </Style>
+
         <Button x:Key="MySeat" x:Shared="False" Tag="{Binding SeatID, RelativeSource={RelativeSource AncestorType=ContentControl}}">
             <!--DataContext="{Binding Context.DepartureFlight.Local}">-->
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
-                    <i:InvokeCommandAction Command="{Binding SeatSelectionChangedCommand}" CommandParameter="{Binding Tag, RelativeSource={RelativeSource AncestorType=Button}}"/> <!--CommandParameter="{Binding SelectedSeatflightID}"-->
+                    <i:InvokeCommandAction Command="{Binding SeatSelectionChangedCommand}" CommandParameter="{Binding Tag, RelativeSource={RelativeSource AncestorType=Button}}"/>
+                    <!--CommandParameter="{Binding SelectedSeatflightID}"-->
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Button>
@@ -46,19 +43,19 @@
             <ImageBrush ImageSource="/Images/boing 737 300.png"/>
         </Grid.Background>
          <!--1-й ряд-->
-        <ContentControl Margin="233,172,0,0" Content="{StaticResource MySeat}" />
-        <ContentControl Margin="233,187,0,0" Content="{StaticResource MySeat}" />
-        <ContentControl Margin="233,202,0,0" Content="{StaticResource MySeat}" />
-        <ContentControl Margin="233,238,0,0" Content="{StaticResource MySeat}" />
-        <ContentControl Margin="233,253,0,0" Content="{StaticResource MySeat}" />
-        <ContentControl Margin="233,268,0,0" Content="{StaticResource MySeat}" />
+        <ContentControl Margin="233,172,0,0" Content="{StaticResource MySeat}" Tag="1"/>
+        <!--<ContentControl Margin="233,187,0,0" Content="{StaticResource MySeat}" Tag="2"/>
+        <ContentControl Margin="233,202,0,0" Content="{StaticResource MySeat}" Tag="3"/>
+        <ContentControl Margin="233,238,0,0" Content="{StaticResource MySeat}" Tag="4"/>
+        <ContentControl Margin="233,253,0,0" Content="{StaticResource MySeat}" Tag="5"/>
+        <ContentControl Margin="233,268,0,0" Content="{StaticResource MySeat}" Tag="6"/>-->
         <!--2-й ряд-->
-        <ContentControl Margin="251,172,0,0" Content="{StaticResource MySeat}"/>
+        <!--<ContentControl Margin="251,172,0,0" Content="{StaticResource MySeat}"/>
         <ContentControl Margin="251,187,0,0" Content="{StaticResource MySeat}" />
         <ContentControl Margin="251,202,0,0" Content="{StaticResource MySeat}" />
         <ContentControl Margin="251,238,0,0" Content="{StaticResource MySeat}" />
         <ContentControl Margin="251,253,0,0" Content="{StaticResource MySeat}" />
-        <ContentControl Margin="251,268,0,0" Content="{StaticResource MySeat}" />
+        <ContentControl Margin="251,268,0,0" Content="{StaticResource MySeat}" />-->
 
     </Grid>
 </UserControl>

@@ -31,7 +31,7 @@ namespace AirportPrj.Model
         public Flight(string FlightID)
         {
             this.FlightID = FlightID;
-            CreateSeats();
+            //CreateSeats();
         }
         #endregion
 

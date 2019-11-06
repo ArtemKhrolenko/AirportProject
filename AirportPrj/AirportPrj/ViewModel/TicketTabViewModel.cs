@@ -6,6 +6,9 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using AirportPrj.View.UserControls;
 using System.Windows;
+using System.Windows.Controls;
+using System.ComponentModel;
+using AirportPrj.Helper;
 
 namespace AirportPrj.ViewModel
 {
@@ -33,7 +36,8 @@ namespace AirportPrj.ViewModel
         public DepartureFlight FlightInfo { get; set; } = new DepartureFlight();
         public DepartureFlight SelectedSeatflightID { get; set; }
         public Seat SelectedSeatID { get; set; } = new Seat();
-        public string SeatID { get; set; }
+        public Button SelectedButton { get; set; }
+        public string SeatID {get;  set;}
 
         #endregion
 
@@ -57,6 +61,8 @@ namespace AirportPrj.ViewModel
         private RelayCommand _ticketGridSelectionChangedCommand;
         private RelayCommand _flightSelectionChangedCommand;
         private RelayCommand _seatSelectionChangedCommand;
+        //private ICommand _onButtonClickCommand;
+        private string seatID;
 
         public ICommand AddTicketCommand => _addTicketCommand ??
                     (_addTicketCommand = new RelayCommand(
@@ -93,7 +99,7 @@ namespace AirportPrj.ViewModel
                 {
                     if (SelectedTicket == null) return false;
                     if (
-                         //string.IsNullOrEmpty(TicketInfo.FlightID)
+                        //string.IsNullOrEmpty(TicketInfo.FlightID)
                         TicketInfo.Price == 0)
                     {
                         return false;
@@ -158,15 +164,37 @@ namespace AirportPrj.ViewModel
                     (_seatSelectionChangedCommand = new RelayCommand(
                         () =>
                         {
+                            MessageBox.Show(SelectedButton.Tag.ToString());
                             //MessageBox.Show("tttt");
-                            MessageBox.Show(SeatID + " - " + SelectedflightID.Seats[0].Number);
+                            //MessageBox.Show(SeatID + " - " + SelectedflightID.Seats[0].Number);
                             /*SelectedSeatflightID.Seats*/
-                            ;
                         },
-                        () => SelectedSeatID != null));
+                        () => SelectedButton != null));
             }
         }
 
+        //ICommand _onButtonClickCommand;
+
+        //public ICommand OnButtonClickCommand
+        //{
+        //    get { return _onButtonClickCommand ?? (_onButtonClickCommand = new RelayBtnCommand(ButtonClick)); }
+        //}
+
         #endregion
+
+
+        //private void ButtonClick(object button)
+        //{
+        //    Button clickedbutton = button as Button;
+
+        //    if (clickedbutton != null)
+        //    {
+        //        // Here we can check (clickedbutton.Tag) value with static string properties of ButtonNames class..
+
+        //        string msg = string.Format("You Pressed : {0} button", clickedbutton.Tag);
+        //        MessageBox.Show(msg);
+        //    }
+        //}
+
     }
 }
