@@ -34,12 +34,17 @@ namespace AirportPrj.View.UserControls
             // загружаем ресурсы пользовательских элементов
             userControlBoing = new UserControlBoing();
             userControlAirbus = new UserControlAirbus();
+
+            ContentGrid.Children.Clear();
+            ContentGrid.Children.Add(userControlBoing);
         }
 
         private void DataGridFlight_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBox listBox = (ListBox)sender;
             ContentGrid.Children.Clear();
+
+            if (listBox.SelectedIndex < 0) return;
 
             switch (((DepartureFlight)listBox.SelectedItem).Plane.Manufacturer)
             {
@@ -53,6 +58,16 @@ namespace AirportPrj.View.UserControls
                     break;
             }
 
+        }
+
+        private void LisBoxFlight_TargetUpdated(object sender, DataTransferEventArgs e)
+        {
+            ListBox listBox = (ListBox)sender;
+            if (listBox != null && listBox.HasItems) listBox.SelectedIndex = 1;
+
+            //MessageBox.Show(listBox.SelectedIndex.ToString());
+            //ListBox lb = sender as ListBox;
+            //if (lb != null && lb.HasItems) lb.SelectedIndex = 0;
         }
     }
 }

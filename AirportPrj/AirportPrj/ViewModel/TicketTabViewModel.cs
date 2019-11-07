@@ -51,6 +51,8 @@ namespace AirportPrj.ViewModel
         {
             Context = context;
             Context.DepartureFlight.Load();
+
+            //FlightSelectionChangedCommand.Execute(SelectedflightID);
         }
         #endregion
 
@@ -62,8 +64,6 @@ namespace AirportPrj.ViewModel
         private RelayCommand _ticketGridSelectionChangedCommand;
         private RelayCommand _flightSelectionChangedCommand;
         private CustomRelayCommand _seatSelectionChangedCommand;
-        //private ICommand _onButtonClickCommand;
-        private string seatID;
 
         public ICommand AddTicketCommand => _addTicketCommand ??
                     (_addTicketCommand = new RelayCommand(
@@ -147,7 +147,7 @@ namespace AirportPrj.ViewModel
                             PlaneInfo.Manufacturer = SelectedflightID.Plane.Manufacturer;
                             PlaneInfo.Model = SelectedflightID.Plane.Model;
 
-                            PlaneInfo.TotalSeatsNumbers = SelectedflightID.Plane.TotalSeatsNumbers;             // вначале инициализация мест, для корректного подсчета эконом
+                            PlaneInfo.TotalSeatsNumbers = SelectedflightID.Plane.TotalSeatsNumbers;                 // вначале инициализация мест, для корректного подсчета эконом
                             PlaneInfo.BusinessSeatsNumbers = SelectedflightID.Plane.BusinessSeatsNumbers;
                             PlaneInfo.FirstClassSeatsNumbers = SelectedflightID.Plane.FirstClassSeatsNumbers;
                             PlaneInfo.EconomSeatsNumbers = SelectedflightID.Plane.EconomSeatsNumbers;
@@ -165,69 +165,15 @@ namespace AirportPrj.ViewModel
                     (_seatSelectionChangedCommand = new CustomRelayCommand(
                         (obj) =>
                         {
-                            //MessageBox.Show( ((Button)obj).Tag.ToString());
-                            //MessageBox.Show(obj.GetType().ToString());
-                            MessageBox.Show(obj.ToString());
+                            int seatNumb = int.Parse(obj.ToString()) - 1; // индекс с 0
 
-
-                            //MessageBox.Show("tttt");
-                            //MessageBox.Show(SeatID + " - " + SelectedflightID.Seats[0].Number);
-                            /*SelectedSeatflightID.Seats*/
+                            MessageBox.Show(SelectedflightID.Seats[seatNumb].Number);
                         },
                         (obj) => SelectedSeatID != null));
             }
         }
 
-        //ICommand _onButtonClickCommand;
-
-        //public ICommand OnButtonClickCommand
-        //{
-        //    get { return _onButtonClickCommand ?? (_onButtonClickCommand = new RelayBtnCommand(ButtonClick)); }
-        //}
-
         #endregion
 
-
-        //private void ButtonClick(object button)
-        //{
-        //    Button clickedbutton = button as Button;
-
-        //    if (clickedbutton != null)
-        //    {
-        //        // Here we can check (clickedbutton.Tag) value with static string properties of ButtonNames class..
-
-        //        string msg = string.Format("You Pressed : {0} button", clickedbutton.Tag);
-        //        MessageBox.Show(msg);
-        //    }
-        //}
-
-    }
-
-    public class CustomRelayCommand : ICommand
-    {
-        private Action<object> execute;
-        private Func<object, bool> canExecute;
-       
-        event EventHandler ICommand.CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
-
-        public CustomRelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
-        {
-            this.execute = execute;
-            this.canExecute = canExecute;
-        }
-
-        public bool CanExecute(object parameter)
-        {
-            return this.canExecute == null || this.canExecute(parameter);
-        }
-
-        public void Execute(object parameter)
-        {
-            this.execute(parameter);
-        }
     }
 }

@@ -15,7 +15,7 @@ namespace AirportPrj.DataBase
             #region Инициализация типов авиасуден
             var planes = new[]
 {
-                new Plane {PlaneID = "00001", FlightID = "empty", Manufacturer = "Boeing", Model = "737", BusinessSeatsNumbers = 10, FirstClassSeatsNumbers = 20, TotalSeatsNumbers = 100},
+                new Plane {PlaneID = "00001", FlightID = "empty", Manufacturer = "Boeing", Model = "737", BusinessSeatsNumbers = 10, FirstClassSeatsNumbers = 20, TotalSeatsNumbers = 144},
                 new Plane {PlaneID = "00002", FlightID = "empty", Manufacturer = "AirBus", Model = "A380", BusinessSeatsNumbers = 5, FirstClassSeatsNumbers = 15, TotalSeatsNumbers = 150}
             };
             Context.Planes.AddRange(planes);
