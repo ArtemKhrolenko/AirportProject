@@ -39,7 +39,7 @@ namespace AirportPrj.ViewModel
         public DepartureFlight SelectedSeatflightID { get; set; }
         public Seat SelectedSeatID { get; set; } = new Seat();
         //public Button SelectedButton { get; set; } = new Button();
-        //public string SeatID {get;  set;}
+        //public string SeatIDInfo { get; set; } = "hgdfdhsgfsdf";
 
         #endregion
 
