@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace AirportPrj.Model
 {
-    class Ticket : INotifyPropertyChanged
+    public class Ticket : INotifyPropertyChanged
     {
         #region Fields
         private string _ticketNumb;                 // номер билета
@@ -38,7 +38,13 @@ namespace AirportPrj.Model
             }
         }
 
-       
+
+        [ForeignKey("Seat")]
+        public string SeatID { get; set; }
+
+        public Seat Seat { get; set; }
+
+
         //public Passenger Passenger { get; set; }   // пассажир
         #endregion
 

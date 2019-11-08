@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace AirportPrj.Model
 {
-    class Flight : INotifyPropertyChanged
+    public class Flight : INotifyPropertyChanged
     {
         #region Fields
         private string _flightID;                   // номер рейса
@@ -31,7 +31,7 @@ namespace AirportPrj.Model
         public Flight(string FlightID)
         {
             this.FlightID = FlightID;
-            //CreateSeats();
+            CreateSeats();
         }
         #endregion
 
@@ -135,9 +135,9 @@ namespace AirportPrj.Model
 
         public void CreateSeats()
         {
-            for (int i = 0; i < Plane.TotalSeatsNumbers; i++)
+            for (int i = 1; i < 145; i++)
             {
-                Seats.Add(new Seat() { Number = $"{FlightID}_{(i+1).ToString()}" });
+                Seats.Add(new Seat() { Number = $"{FlightID}_{(i).ToString()}" });
             }
         }
 
@@ -152,7 +152,7 @@ namespace AirportPrj.Model
     }
 
     #region классы ArrivalFlight и DepartureFlight, созданные для того чтобы в БД создать две разные таблицы типа Flight
-    class ArrivalFlight : Flight
+    public class ArrivalFlight : Flight
     {
         public ArrivalFlight()
         {
@@ -163,7 +163,7 @@ namespace AirportPrj.Model
         }
     }
 
-    class DepartureFlight : Flight
+    public class DepartureFlight : Flight
     {
         public DepartureFlight()
         {

@@ -110,6 +110,7 @@
     <Compile Include="DataBase\SeatConfig.cs" />
     <Compile Include="DataBase\PlaneConfig.cs" />
     <Compile Include="DataBase\TicketConfig.cs" />
+    <Compile Include="Helper\CustomRelayCommand.cs" />
     <Compile Include="Model\Plane.cs" />
     <Compile Include="Model\Flight.cs" />
     <Compile Include="Model\Passenger.cs" />
@@ -118,6 +119,12 @@
     <Compile Include="ViewModel\FlightTabViewModel.cs" />
     <Compile Include="ViewModel\PassengerTabViewModel.cs" />
     <Compile Include="ViewModel\TicketTabViewModel.cs" />
+    <Compile Include="View\UserControls\UserControlAirbus.xaml.cs">
+      <DependentUpon>UserControlAirbus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\UserControlBoing.xaml.cs">
+      <DependentUpon>UserControlBoing.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControls\UserControlFlight.xaml.cs">
       <DependentUpon>UserControlFlight.xaml</DependentUpon>
     </Compile>
@@ -152,6 +159,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\UserControls\UserControlAirbus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\UserControlBoing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserControls\UserControlFlight.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -237,13 +252,8 @@
     <Resource Include="Images\airplane_landing_32px.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AirportPrj.Properties.Settings.AirportDBConnectionString.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="AirportPrj.Properties.Settings.AirportDBConnectionString_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>AirportPrj.Properties.Settings.AirportDBConnectionString.mdf</DependentUpon>
-    </Content>
+    <Resource Include="Images\airbus A319.png" />
+    <Resource Include="Images\boing 737 300.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
