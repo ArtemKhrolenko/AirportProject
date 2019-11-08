@@ -56,16 +56,16 @@ namespace AirportPrj.DataBase
             #region Инициализация билетов
             var tickets = new[]
 {
-                new Ticket {TicketNumb = "01001", Price = 34.8M},
-                new Ticket {TicketNumb = "01002", Price = 44.1M},
-                new Ticket {TicketNumb = "01003", Price = 22.5M},
-                new Ticket {TicketNumb = "01004", Price = 13.0M},
-                new Ticket {TicketNumb = "01005", Price = 67.9M},
-                new Ticket {TicketNumb = "01006", Price = 47.5M},
-                new Ticket {TicketNumb = "01007", Price = 25.6M},
-                new Ticket {TicketNumb = "01008", Price = 36.7M},
-                new Ticket {TicketNumb = "01009", Price = 47.8M},
-                new Ticket {TicketNumb = "01010", Price = 58.9M}
+                new Ticket {TicketNumb = "01001", Price = 34.8M, SeatID = "KC 407_1"},
+                new Ticket {TicketNumb = "01002", Price = 44.1M, SeatID = "KC 407_2"},
+                new Ticket {TicketNumb = "01003", Price = 22.5M, SeatID = "KC 407_3"},
+                new Ticket {TicketNumb = "01004", Price = 13.0M, SeatID = "KC 407_4"},
+                new Ticket {TicketNumb = "01005", Price = 67.9M, SeatID = "KC 407_5"},
+                new Ticket {TicketNumb = "01006", Price = 47.5M, SeatID = "KC 407_6"},
+                new Ticket {TicketNumb = "01007", Price = 25.6M, SeatID = "KC 407_7"},
+                new Ticket {TicketNumb = "01008", Price = 36.7M, SeatID = "KC 407_8"},
+                new Ticket {TicketNumb = "01009", Price = 47.8M, SeatID = "KC 407_9"},
+                new Ticket {TicketNumb = "01010", Price = 58.9M, SeatID = "KC 407_10"},
             };
             Context.Tickets.AddRange(tickets);
             #endregion

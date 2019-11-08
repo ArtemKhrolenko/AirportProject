@@ -9,7 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.ComponentModel;
 using AirportPrj.Helper;
-using System;
+using System.Linq;
 
 namespace AirportPrj.ViewModel
 {
@@ -27,6 +27,7 @@ namespace AirportPrj.ViewModel
         // свойства связаные с билетами
         public Ticket TicketInfo { get; set; } = new Ticket();
         public Ticket SelectedTicket { get; set; }
+        public Passenger PassengerInfo { get; set; } = new Passenger();
 
         // свойства связаные с рейсом
         public Plane PlaneInfo { get; set; } = new Plane();
@@ -37,8 +38,8 @@ namespace AirportPrj.ViewModel
         public DepartureFlight FlightInfo { get; set; } = new DepartureFlight();
         public DepartureFlight SelectedSeatflightID { get; set; }
         public Seat SelectedSeatID { get; set; } = new Seat();
-        public Button SelectedButton { get; set; } = new Button();
-        public string SeatID {get;  set;}
+        //public Button SelectedButton { get; set; } = new Button();
+        //public string SeatID {get;  set;}
 
         #endregion
 
@@ -50,9 +51,9 @@ namespace AirportPrj.ViewModel
         public TicketTabViewModel(AirportContext context)
         {
             Context = context;
-            Context.DepartureFlight.Load();
-
-            //FlightSelectionChangedCommand.Execute(SelectedflightID);
+            Context.DepartureFlight.Load(); // загружаем таблицу DepartureFlight
+            Context.Tickets.Load();         // загружаем таблицу Tickets
+            Context.Passengers.Load();      // загружаем таблицу Passengers
         }
         #endregion
 
@@ -143,6 +144,8 @@ namespace AirportPrj.ViewModel
                     (_flightSelectionChangedCommand = new RelayCommand(
                         () =>
                         {
+                            FlightInfo.FlightID = SelectedflightID.FlightID;
+
                             PlaneInfo.PlaneID = SelectedflightID.Plane.PlaneID;
                             PlaneInfo.Manufacturer = SelectedflightID.Plane.Manufacturer;
                             PlaneInfo.Model = SelectedflightID.Plane.Model;
@@ -165,11 +168,42 @@ namespace AirportPrj.ViewModel
                     (_seatSelectionChangedCommand = new CustomRelayCommand(
                         (obj) =>
                         {
-                            int seatNumb = int.Parse(obj.ToString()) - 1; // индекс с 0
+                            // значение поля Tag из объекта типа Button
+                            int seatNumb = int.Parse(obj.ToString()) - 1;
+                            var SeatID = SelectedflightID.Seats[seatNumb].Number;
 
-                            MessageBox.Show(SelectedflightID.Seats[seatNumb].Number);
+                            // выборка из таблицы билетов по SeatID
+                            var tickets = from t in Context.Tickets
+                                          where t.SeatID == SeatID
+                                          select t;
+
+                            var ticket = tickets.FirstOrDefault();
+
+                            if (ticket == null)
+                            {
+                                MessageBox.Show("Место не продано!!!");
+                                return;
+                            }
+
+                                // выборка из таблицы пассажиров по номеру билета
+                                var passengers = from p in Context.Passengers
+                                                 where p.TicketNumb == ticket.TicketNumb
+                                                 select p;
+
+                                var passenger = passengers.FirstOrDefault();
+
+                                TicketInfo.TicketNumb = passenger.Ticket.TicketNumb;
+                                //TicketInfo.Seat.Number = passenger.Ticket.SeatID;
+                                TicketInfo.Price = passenger.Ticket.Price;
+
+                                PassengerInfo.Passport = passenger.Passport;
+                                PassengerInfo.FirstName = passenger.FirstName;
+                                PassengerInfo.LastName = passenger.LastName;
+
+                                //MessageBox.Show(ticket.TicketNumb +" - "+ passengers.FirstOrDefault().TicketNumb);
+
                         },
-                        (obj) => SelectedSeatID != null));
+                        (obj) => SelectedflightID != null));
             }
         }
 

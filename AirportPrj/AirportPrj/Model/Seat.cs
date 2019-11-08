@@ -61,6 +61,11 @@ namespace AirportPrj.Model
             }
         }
 
+        //[ForeignKey("Ticket")]
+        //public string TicketNumb { get; set; }
+
+        //public Ticket Ticket { get; set; }
+
         #endregion
 
         #region Event

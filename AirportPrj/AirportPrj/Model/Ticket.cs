@@ -38,7 +38,13 @@ namespace AirportPrj.Model
             }
         }
 
-       
+
+        [ForeignKey("Seat")]
+        public string SeatID { get; set; }
+
+        public Seat Seat { get; set; }
+
+
         //public Passenger Passenger { get; set; }   // пассажир
         #endregion
 
