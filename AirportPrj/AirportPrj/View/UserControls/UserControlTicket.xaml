@@ -91,11 +91,11 @@
 
             <StackPanel Grid.Column="3" Grid.Row="0">
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding TicketInfo.TicketNumb, Mode=OneWay}"/>
-                <!--<TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding TicketInfo.Seat.Number, Mode=OneWay}"/>-->
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding TicketInfo.Price, Mode=OneWay}"/>
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding PassengerInfo.Passport, Mode=OneWay}"/>
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding PassengerInfo.FirstName, Mode=OneWay}"/>
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding PassengerInfo.LastName, Mode=OneWay}"/>
+                <!--<TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding SeatIDInfo, Mode=OneWay}"/>-->
             </StackPanel>
         </Grid>
     </Grid>
