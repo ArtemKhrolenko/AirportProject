@@ -12,6 +12,8 @@ namespace AirportPrj.Model
         private string _ticketNumb;                 // номер билета
 
         private decimal _price;                     // цена
+
+        private Seat _seat;                       //место
         #endregion
 
         #region Properties
@@ -42,7 +44,15 @@ namespace AirportPrj.Model
         [ForeignKey("Seat")]
         public string SeatID { get; set; }
 
-        public Seat Seat { get; set; }
+        public Seat Seat
+        { get => _seat;
+            set
+            {
+                if (value == _seat) return;
+                _seat = value;
+                OnPropertyChanged();
+            }
+        }
 
 
         //public Passenger Passenger { get; set; }   // пассажир

@@ -185,22 +185,26 @@ namespace AirportPrj.ViewModel
                                 return;
                             }
 
-                                // выборка из таблицы пассажиров по номеру билета
-                                var passengers = from p in Context.Passengers
-                                                 where p.TicketNumb == ticket.TicketNumb
-                                                 select p;
+                            // выборка из таблицы пассажиров по номеру билета
+                            var passengers = from p in Context.Passengers
+                                             where p.TicketNumb == ticket.TicketNumb
+                                             select p;
 
-                                var passenger = passengers.FirstOrDefault();
+                            var passenger = passengers.FirstOrDefault();
 
-                                TicketInfo.TicketNumb = passenger.Ticket.TicketNumb;
-                                //TicketInfo.Seat.Number = passenger.Ticket.SeatID;
-                                TicketInfo.Price = passenger.Ticket.Price;
+                            TicketInfo.TicketNumb = passenger.Ticket.TicketNumb;
+                            //TicketInfo.Seat.Number = passenger.Ticket.SeatID;
+                            TicketInfo.Price = passenger.Ticket.Price;
 
-                                PassengerInfo.Passport = passenger.Passport;
-                                PassengerInfo.FirstName = passenger.FirstName;
-                                PassengerInfo.LastName = passenger.LastName;
+                            PassengerInfo.Passport = passenger.Passport;
+                            PassengerInfo.FirstName = passenger.FirstName;
+                            PassengerInfo.LastName = passenger.LastName;
+                            TicketInfo.Seat = ticket.Seat;
+                            
 
-                                //MessageBox.Show(ticket.TicketNumb +" - "+ passengers.FirstOrDefault().TicketNumb);
+
+
+                            //MessageBox.Show(ticket.TicketNumb +" - "+ passengers.FirstOrDefault().TicketNumb);
 
                         },
                         (obj) => SelectedflightID != null));

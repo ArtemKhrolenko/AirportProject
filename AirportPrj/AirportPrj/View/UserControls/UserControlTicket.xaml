@@ -82,16 +82,16 @@
 
             <StackPanel Grid.Column="2" Grid.Row="0" >
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="ID билета:"/>
-                <!--<TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Номер места:"/>-->
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Номер места:"/>
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Цена:"/>
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Паспорт:"/>
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Имя:"/>
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Фамилия:"/>
             </StackPanel>
 
-            <StackPanel Grid.Column="3" Grid.Row="0">
+            <StackPanel Grid.Column="3" Grid.Row="0"  >
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding TicketInfo.TicketNumb, Mode=OneWay}"/>
-                <!--<TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding TicketInfo.Seat.Number, Mode=OneWay}"/>-->
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding TicketInfo.Seat.Number, Mode=OneWay}"/>
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding TicketInfo.Price, Mode=OneWay}"/>
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding PassengerInfo.Passport, Mode=OneWay}"/>
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding PassengerInfo.FirstName, Mode=OneWay}"/>
