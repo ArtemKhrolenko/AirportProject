@@ -15,14 +15,34 @@
                 <Setter Property="Button.VerticalAlignment" Value="Top" />
                 <Setter Property="Button.Height" Value="15" />
                 <Setter Property="Button.Width" Value="15" />
+                <!--<Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ContentControl">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>-->
+                
             </Style.Setters>
         </Style>
 
         <Style TargetType="Button">
             <Style.Setters>
                 <Setter Property="Background" Value="Silver"/>
+                <!--<Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ContentControl">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>-->
             </Style.Setters>
-
         </Style>
 
         <Button x:Key="MySeat" x:Shared="False">
@@ -41,8 +61,9 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Images/boing 737 300.png"/>
         </Grid.Background>
+        
         <!--1-й ряд-->
-        <ContentControl Margin="248,172,0,0" Content="{StaticResource MySeat}" Tag="1"/>
+        <ContentControl Margin="248,172,0,0" Content="{StaticResource MySeat}" Tag="1" Background="Aqua"/>
         <ContentControl Margin="248,187,0,0" Content="{StaticResource MySeat}" Tag="2"/>
         <ContentControl Margin="248,202,0,0" Content="{StaticResource MySeat}" Tag="3"/>
         <ContentControl Margin="248,238,0,0" Content="{StaticResource MySeat}" Tag="4"/>

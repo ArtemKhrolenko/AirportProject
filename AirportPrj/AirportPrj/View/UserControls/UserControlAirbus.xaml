@@ -2,13 +2,152 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:local="clr-namespace:AirportPrj.View.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="500" d:DesignWidth="910">
+
+    <UserControl.Resources>
+        <Style TargetType="ContentControl">
+            <Style.Setters>
+                <Setter Property="Button.HorizontalAlignment" Value="Left" />
+                <Setter Property="Button.VerticalAlignment" Value="Top" />
+                <Setter Property="Button.Height" Value="15" />
+                <Setter Property="Button.Width" Value="15" />
+            </Style.Setters>
+        </Style>
+
+        <Style TargetType="Button">
+            <Style.Setters>
+                <Setter Property="Background" Value="Silver"/>
+            </Style.Setters>
+
+        </Style>
+
+        <Button x:Key="MySeat" x:Shared="False">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction 
+                        Command="{Binding SeatSelectionChangedCommand}" 
+                        CommandParameter="{Binding Path=Tag, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentControl},AncestorLevel=2}}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+
+    </UserControl.Resources>
+
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/airbus A319.png" Stretch="UniformToFill"/>
         </Grid.Background>
+        <!--1-й ряд-->
+        <ContentControl Margin="243,178,0,0" Content="{StaticResource MySeat}" Tag="1"/>
+        <ContentControl Margin="243,200,0,0" Content="{StaticResource MySeat}" Tag="2"/>
+        <ContentControl Margin="243,244,0,0" Content="{StaticResource MySeat}" Tag="3"/>
+        <ContentControl Margin="243,266,0,0" Content="{StaticResource MySeat}" Tag="4"/>
+        <!--2-й ряд-->
+        <ContentControl Margin="284,178,0,0" Content="{StaticResource MySeat}" Tag="5"/>
+        <ContentControl Margin="284,200,0,0" Content="{StaticResource MySeat}" Tag="6"/>
+        <ContentControl Margin="284,244,0,0" Content="{StaticResource MySeat}" Tag="7"/>
+        <ContentControl Margin="284,266,0,0" Content="{StaticResource MySeat}" Tag="8"/>
+        <!--3-й ряд-->
+        <ContentControl Margin="322,178,0,0" Content="{StaticResource MySeat}" Tag="9"/>
+        <ContentControl Margin="322,200,0,0" Content="{StaticResource MySeat}" Tag="10"/>
+        <ContentControl Margin="322,244,0,0" Content="{StaticResource MySeat}" Tag="11"/>
+        <ContentControl Margin="322,266,0,0" Content="{StaticResource MySeat}" Tag="12"/>
+        <!--4-й ряд-->
+        <ContentControl Margin="362,178,0,0" Content="{StaticResource MySeat}" Tag="13"/>
+        <ContentControl Margin="362,200,0,0" Content="{StaticResource MySeat}" Tag="14"/>
+        <ContentControl Margin="362,244,0,0" Content="{StaticResource MySeat}" Tag="15"/>
+        <ContentControl Margin="362,266,0,0" Content="{StaticResource MySeat}" Tag="16"/>
+        
+        <!--                                                                          -->
+        
+        <!--5-й ряд-->
+        <ContentControl Margin="466,175,0,0" Content="{StaticResource MySeat}" Tag="17"/>
+        <ContentControl Margin="466,189,0,0" Content="{StaticResource MySeat}" Tag="18"/>
+        <ContentControl Margin="466,204,0,0" Content="{StaticResource MySeat}" Tag="19"/>
+        <ContentControl Margin="466,241,0,0" Content="{StaticResource MySeat}" Tag="20"/>
+        <ContentControl Margin="466,255,0,0" Content="{StaticResource MySeat}" Tag="21"/>
+        <ContentControl Margin="466,269,0,0" Content="{StaticResource MySeat}" Tag="22"/>
+        <!--6-й ряд-->
+        <ContentControl Margin="489,175,0,0" Content="{StaticResource MySeat}" Tag="23"/>
+        <ContentControl Margin="489,189,0,0" Content="{StaticResource MySeat}" Tag="24"/>
+        <ContentControl Margin="489,204,0,0" Content="{StaticResource MySeat}" Tag="25"/>
+        <ContentControl Margin="489,241,0,0" Content="{StaticResource MySeat}" Tag="26"/>
+        <ContentControl Margin="489,255,0,0" Content="{StaticResource MySeat}" Tag="27"/>
+        <ContentControl Margin="489,269,0,0" Content="{StaticResource MySeat}" Tag="28"/>
+        <!--7-й ряд-->
+        <ContentControl Margin="510,175,0,0" Content="{StaticResource MySeat}" Tag="29"/>
+        <ContentControl Margin="510,189,0,0" Content="{StaticResource MySeat}" Tag="30"/>
+        <ContentControl Margin="510,204,0,0" Content="{StaticResource MySeat}" Tag="31"/>
+        <ContentControl Margin="510,241,0,0" Content="{StaticResource MySeat}" Tag="32"/>
+        <ContentControl Margin="510,255,0,0" Content="{StaticResource MySeat}" Tag="33"/>
+        <ContentControl Margin="510,269,0,0" Content="{StaticResource MySeat}" Tag="34"/>
+        <!--8-й ряд-->
+        <ContentControl Margin="530,175,0,0" Content="{StaticResource MySeat}" Tag="35"/>
+        <ContentControl Margin="530,189,0,0" Content="{StaticResource MySeat}" Tag="36"/>
+        <ContentControl Margin="530,204,0,0" Content="{StaticResource MySeat}" Tag="37"/>
+        <ContentControl Margin="530,241,0,0" Content="{StaticResource MySeat}" Tag="38"/>
+        <ContentControl Margin="530,255,0,0" Content="{StaticResource MySeat}" Tag="39"/>
+        <ContentControl Margin="530,269,0,0" Content="{StaticResource MySeat}" Tag="40"/>
+        <!--9-й ряд-->
+        <ContentControl Margin="552,175,0,0" Content="{StaticResource MySeat}" Tag="41"/>
+        <ContentControl Margin="552,189,0,0" Content="{StaticResource MySeat}" Tag="42"/>
+        <ContentControl Margin="552,204,0,0" Content="{StaticResource MySeat}" Tag="43"/>
+        <ContentControl Margin="552,241,0,0" Content="{StaticResource MySeat}" Tag="44"/>
+        <ContentControl Margin="552,255,0,0" Content="{StaticResource MySeat}" Tag="45"/>
+        <ContentControl Margin="552,269,0,0" Content="{StaticResource MySeat}" Tag="46"/>
+        <!--10-й ряд-->
+        <ContentControl Margin="574,175,0,0" Content="{StaticResource MySeat}" Tag="47"/>
+        <ContentControl Margin="574,189,0,0" Content="{StaticResource MySeat}" Tag="48"/>
+        <ContentControl Margin="574,204,0,0" Content="{StaticResource MySeat}" Tag="49"/>
+        <ContentControl Margin="574,241,0,0" Content="{StaticResource MySeat}" Tag="50"/>
+        <ContentControl Margin="574,255,0,0" Content="{StaticResource MySeat}" Tag="51"/>
+        <ContentControl Margin="574,269,0,0" Content="{StaticResource MySeat}" Tag="52"/>
+        <!--11-й ряд-->
+        <ContentControl Margin="596,175,0,0" Content="{StaticResource MySeat}" Tag="53"/>
+        <ContentControl Margin="596,189,0,0" Content="{StaticResource MySeat}" Tag="54"/>
+        <ContentControl Margin="596,204,0,0" Content="{StaticResource MySeat}" Tag="55"/>
+        <ContentControl Margin="596,241,0,0" Content="{StaticResource MySeat}" Tag="56"/>
+        <ContentControl Margin="596,255,0,0" Content="{StaticResource MySeat}" Tag="57"/>
+        <ContentControl Margin="596,269,0,0" Content="{StaticResource MySeat}" Tag="58"/>
+        <!--12-й ряд-->
+        <ContentControl Margin="617,175,0,0" Content="{StaticResource MySeat}" Tag="59"/>
+        <ContentControl Margin="617,189,0,0" Content="{StaticResource MySeat}" Tag="60"/>
+        <ContentControl Margin="617,204,0,0" Content="{StaticResource MySeat}" Tag="61"/>
+        <ContentControl Margin="617,241,0,0" Content="{StaticResource MySeat}" Tag="62"/>
+        <ContentControl Margin="617,255,0,0" Content="{StaticResource MySeat}" Tag="63"/>
+        <ContentControl Margin="617,269,0,0" Content="{StaticResource MySeat}" Tag="64"/>
+        <!--13-й ряд-->
+        <ContentControl Margin="639,175,0,0" Content="{StaticResource MySeat}" Tag="65"/>
+        <ContentControl Margin="639,189,0,0" Content="{StaticResource MySeat}" Tag="66"/>
+        <ContentControl Margin="639,204,0,0" Content="{StaticResource MySeat}" Tag="67"/>
+        <ContentControl Margin="639,241,0,0" Content="{StaticResource MySeat}" Tag="68"/>
+        <ContentControl Margin="639,255,0,0" Content="{StaticResource MySeat}" Tag="69"/>
+        <ContentControl Margin="639,269,0,0" Content="{StaticResource MySeat}" Tag="70"/>
+        <!--14-й ряд-->
+        <ContentControl Margin="660,175,0,0" Content="{StaticResource MySeat}" Tag="71"/>
+        <ContentControl Margin="660,189,0,0" Content="{StaticResource MySeat}" Tag="72"/>
+        <ContentControl Margin="660,204,0,0" Content="{StaticResource MySeat}" Tag="73"/>
+        <ContentControl Margin="660,241,0,0" Content="{StaticResource MySeat}" Tag="74"/>
+        <ContentControl Margin="660,255,0,0" Content="{StaticResource MySeat}" Tag="75"/>
+        <ContentControl Margin="660,269,0,0" Content="{StaticResource MySeat}" Tag="76"/>
+        <!--15-й ряд-->
+        <ContentControl Margin="681,175,0,0" Content="{StaticResource MySeat}" Tag="77"/>
+        <ContentControl Margin="681,189,0,0" Content="{StaticResource MySeat}" Tag="78"/>
+        <ContentControl Margin="681,204,0,0" Content="{StaticResource MySeat}" Tag="79"/>
+        <ContentControl Margin="681,241,0,0" Content="{StaticResource MySeat}" Tag="80"/>
+        <ContentControl Margin="681,255,0,0" Content="{StaticResource MySeat}" Tag="81"/>
+        <ContentControl Margin="681,269,0,0" Content="{StaticResource MySeat}" Tag="82"/>
+        <!--16-й ряд-->
+        <ContentControl Margin="702,175,0,0" Content="{StaticResource MySeat}" Tag="83"/>
+        <ContentControl Margin="702,189,0,0" Content="{StaticResource MySeat}" Tag="84"/>
+        <ContentControl Margin="702,204,0,0" Content="{StaticResource MySeat}" Tag="85"/>
+        <ContentControl Margin="702,241,0,0" Content="{StaticResource MySeat}" Tag="86"/>
+        <ContentControl Margin="702,255,0,0" Content="{StaticResource MySeat}" Tag="87"/>
+        <ContentControl Margin="702,269,0,0" Content="{StaticResource MySeat}" Tag="88"/>
+
     </Grid>
 </UserControl>
